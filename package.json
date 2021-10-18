@@ -1,0 +1,29 @@
+{
+  "name": "Calendar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jenniferxsj/Calendar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jenniferxsj/Calendar/issues"
+  },
+  "homepage": "https://github.com/jenniferxsj/Calendar#readme",
+  "devDependencies": {
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "^7.26.1",
+    "prettier": "2.4.1"
+  },
+  "dependencies": {
+    "mongodb": "^4.1.3"
+  }
+}
