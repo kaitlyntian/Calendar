@@ -1,5 +1,51 @@
 #main-background {
-	height: 500px;
+	height: 650px;
 	width: 100%;
-	background-color: red;
+	/* Photo by Ketut Subiyanto from Pexels */
+	background-size: cover;
+	margin: 0rem;
+	overflow: hidden;
+}
+
+#main-background img {
+	width: 100%;
+	padding: 0rem;
+}
+
+#image-small {
+	height: 75%;
+}
+
+#main-small {
+	height: 25%;
+	background-color: black;
+	width: 100%;
+}
+
+#main-background #centered {
+	position: absolute;
+	top: 50%;
+	left: 15%;
+	width: 250px;
+	overflow-wrap: break-word;
+}
+
+.container-fluid {
+	padding: 0rem;
+}
+
+.col-lg-12 {
+	padding: 0px;
+}
+
+.col-sm-12 {
+	padding: 0px;
+}
+
+.main-info {
+	height: 250px;
+	width: 100%;
+	background-color: green;
+	margin: 1rem 0rem 0rem 0rem;
+	padding: 0rem;
 }
