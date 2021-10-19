@@ -7,18 +7,19 @@
 	overflow: hidden;
 }
 
-#main-background img {
+#main-background #main-background-img {
 	width: 100%;
+	height: 100%;
 	padding: 0rem;
 }
 
 #image-small {
-	height: 75%;
+	height: 65%;
 }
 
 #main-small {
 	height: 25%;
-	background-color: black;
+	background-color: #22549f;
 	width: 100%;
 }
 
@@ -28,6 +29,13 @@
 	left: 15%;
 	width: 250px;
 	overflow-wrap: break-word;
+}
+
+#main-background #main-fitness-image {
+	position: absolute;
+	right: -10%;
+	bottom: 4%;
+	height: 65%;
 }
 
 .container-fluid {
