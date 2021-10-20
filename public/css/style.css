@@ -2,6 +2,10 @@
 	background-color: #f8f9fa;
 }
 
+.row {
+	margin: 0rem;
+}
+
 #main-background {
 	height: 650px;
 	width: 100%;
@@ -19,6 +23,7 @@
 
 #image-small {
 	height: 65%;
+	width: 100%;
 }
 
 #main-small {
@@ -55,7 +60,7 @@
 }
 
 .main-info {
-	height: 250px;
+	height: 500px;
 	width: 100%;
 	background-color: #f8f9fa;
 	margin: 0rem;
@@ -64,16 +69,20 @@
 
 .main-info img {
 	/* https://freepngimg.com/png/10806-calendar-png-image is where image is from */
-	width: 250px;
-	height: 250px;
+	width: 350px;
+	height: 350px;
 }
 
 .main-info h5 {
-	margin:  125px;
+
 }
 
 .main-info-block {
-	height: 250px;
+
+}
+
+.card-group {
+	padding: 0rem;
 }
 
 .card {
