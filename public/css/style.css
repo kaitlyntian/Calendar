@@ -1,4 +1,4 @@
-.container-fluid {
+body {
 	background-color: #f8f9fa;
 }
 
@@ -101,5 +101,31 @@
 
 footer {
 	margin-top: 1rem;
+}
+
+/* Register Style */
+
+#register-button {
+	width: 100%;
+	border-radius: 0px;
+}
+
+.form-control {
+	border-radius: 0px;
+}
+
+#register-login-link {
+	text-decoration: none;
+}
+
+/* Login Style */
+
+#login-button {
+	width: 100%;
+	border-radius: 0px;
+}
+
+#login-register-link {
+	text-decoration: none;
 }
 
