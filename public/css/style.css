@@ -6,6 +6,18 @@ body {
 	margin: 0rem;
 }
 
+.col-lg-12 {
+	padding: 0px;
+}
+
+.col-sm-12 {
+	padding: 0px;
+}
+
+.container-fluid {
+	padding: 0rem;
+}
+
 #main-background {
 	height: 650px;
 	width: 100%;
@@ -38,6 +50,10 @@ body {
 	left: 15%;
 	width: 250px;
 	overflow-wrap: break-word;
+	box-shadow: -5px 5px 5px black;
+	padding: 1rem;
+	background-color: #147ef0;
+	border-radius: 1rem;
 }
 
 #main-background #main-fitness-image {
@@ -47,46 +63,33 @@ body {
 	height: 65%;
 }
 
-.container-fluid {
-	padding: 0rem;
-}
-
-.col-lg-12 {
-	padding: 0px;
-}
-
-.col-sm-12 {
-	padding: 0px;
-}
-
 .main-info {
-	height: 500px;
+	height: 300px;
 	width: 100%;
 	background-color: #f8f9fa;
 	margin: 0rem;
 	padding: 0rem;
 }
 
-.main-info img {
-	/* https://freepngimg.com/png/10806-calendar-png-image is where image is from */
-	width: 350px;
-	height: 350px;
-}
-
-.main-info h5 {
-
-}
-
-.main-info-block {
-
+#align-centered{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
 }
 
 .card-group {
-	padding: 0rem;
+	padding: 1rem;
 }
 
 .card {
-	border-radius: 0rem;
+	margin-right: 2rem;
+	margin-left: 2rem;
+	transition: 0.3s;
+}
+
+.card:hover {
+	border: 2px solid blue!important;
 }
 
 .card .card-footer {
@@ -110,25 +113,12 @@ footer {
 	border-radius: 0px;
 }
 
-.self-defined {
-	font-family: 'Birthstone', cursive;
-  font-family: 'Dancing Script', cursive;
-  font-family: 'Open Sans', sans-serif;
-  background: url("../images/exercise.jpeg") no-repeat;
-  background-size: cover;
-}
-
 .form-control {
 	border-radius: 0px;
 }
 
 #register-login-link {
 	text-decoration: none;
-}
-
-.register h1 {
-	color: #f1f1f2;
-	font: bold;
 }
 
 /* Login Style */
@@ -141,9 +131,3 @@ footer {
 #login-register-link {
 	text-decoration: none;
 }
-
-/* Navbar */
-.navigation {
-	padding-left: 20px;
-}
-
