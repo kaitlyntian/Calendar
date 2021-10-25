@@ -108,6 +108,18 @@ footer {
 
 /* Register Style */
 
+.self-defined {
+	font-family: 'Birthstone', cursive;
+  font-family: 'Dancing Script', cursive;
+  font-family: 'Open Sans', sans-serif;
+  background: url("../images/exercise.jpeg") no-repeat;
+  background-size: cover;
+}
+.register h1 {
+	color: #f1f1f2;
+	font: bold;
+}
+
 #register-button {
 	width: 100%;
 	border-radius: 0px;
@@ -130,4 +142,9 @@ footer {
 
 #login-register-link {
 	text-decoration: none;
+}
+
+/* Navbar */
+.navigation {
+	padding-left: 20px;
 }
