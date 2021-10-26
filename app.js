@@ -15,4 +15,4 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 
-model.exports.app;
+//model.exports.app;
