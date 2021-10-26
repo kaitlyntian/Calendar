@@ -1,23 +1,18 @@
 let express = require("express");
+let path = require("path");
 let router = express.Router();
 
-/*
-router.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname + "/public/index.html"));
-});
-
-router.get("/login", function(req, res) {
-  res.sendFile(path.join(__dirname+"/public/login.html"));
-});
-
-router.get("/register", function(req, res) {
-  res.sendFile(path.join(__dirname+"/public/register.html"));
-});
-*/
-
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get("/", function (req, res, next) {
+  res.render("index", { title: "Express" });
+});
+
+router.get("/register", (req, res) => {
+  res.redirect("/register.html");
+});
+
+router.get("/login", (req, res) => {
+  res.redirect("/login.html");
 });
 
 module.exports = router;
