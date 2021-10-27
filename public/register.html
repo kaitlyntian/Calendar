@@ -45,60 +45,64 @@
     </nav>
     <div class="container-fluid">
       <div class="row">
-        <div class = "text-center col-md-4 offset-md-4 mt-5 register">
+        <div class = "text-center col-12 img-container-register-lg">
           <h1>Register</h1>
-        </div>
-        <div class="col-md-4 offset-md-4">
-          <form>
-            <div class="mb-3">
-              <label for="Input-FirstName" class="form-label"
-                >First Name</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="Input-FristName"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="Input-LastName" class="form-label"
-                >Last Name</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="Input-LastName"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="Input-Email-Register" class="form-label"
-                >Email address</label
-              >
-              <input
-                type="email"
-                class="form-control"
-                id="Input-Email-Register"
-                aria-describedby="emailHelp"
-              />
-              <div id="emailHelp" class="form-text">
-                We'll never share your email with anyone else.
+          <div class="col-md-4 offset-md-4 form">
+            <form>
+              <div class="mb-3">
+                <label for="Input-FirstName" class="form-label"
+                  >First Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Input-FristName"
+                />
               </div>
-            </div>
-            <div class="mb-3">
-              <label for="Input-Password-Register" class="form-label"
-                >Password</label
-              >
-              <input
-                type="password"
-                class="form-control"
-                id="Input-Password-Register"
-              />
-            </div>
-            <button type="submit" id = "login-button" class="btn btn-primary">Submit</button>
-            <a id = "register-login-link" href = "/login">Already Registered?</a>
-          </form>
+              <div class="mb-3">
+                <label for="Input-LastName" class="form-label"
+                  >Last Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="Input-LastName"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="Input-Email-Register" class="form-label"
+                  >Email address</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="Input-Email-Register"
+                  aria-describedby="emailHelp"
+                />
+                <div id="emailHelp" class="text-light form-text">
+                  We'll never share your email with anyone else.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="Input-Password-Register" class="form-label"
+                  >Password</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="Input-Password-Register"
+                />
+              </div>
+              <button type="submit" id = "login-button" class="btn btn-primary">Submit</button>
+              <a id = "register-login-link" href = "/login">Already Registered?</a>
+            </form>
+          </div>
+          <img src = "../images/exercise.jpeg">
         </div>
       </div>
+      <footer class="text-center text-white">
+        <div class="text-center p-3">@ 2021 Copyright</div>
+      </footer>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

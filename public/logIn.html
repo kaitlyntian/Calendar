@@ -44,35 +44,41 @@
     </nav>
     <div class="container-fluid">
       <div class="row">
-        <div class="text-center col-md-4 offset-md-4 mt-5 register">
+        <!-- FOR LARGE SCREENS -->
+        <div class = "text-center col-12 img-container-login-lg">
           <h1>Login</h1>
+          <div class="col-md-4 offset-md-4 form">
+            <form>
+              <div class="mb-3">
+                <label for="Input-Email-Login" class="form-label">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="Input-Email-Login"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="Input-Password-Login" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="Input-Password-Login"
+                />
+              </div>
+              <button type="submit" id="login-button" class="btn btn-primary">
+                Submit
+              </button>
+              <a id="login-register-link" href="/register">Don't have an account?</a>
+            </form>
+          </div>
+          <img src = "../images/exercise.jpeg">
         </div>
-        <div class="col-md-4 offset-md-4">
-          <form>
-            <div class="mb-3">
-              <label for="Input-Email-Login" class="form-label">Email address</label>
-              <input
-                type="email"
-                class="form-control"
-                id="Input-Email-Login"
-                aria-describedby="emailHelp"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="Input-Password-Login" class="form-label">Password</label>
-              <input
-                type="password"
-                class="form-control"
-                id="Input-Password-Login"
-              />
-            </div>
-            <button type="submit" id="register-button" class="btn btn-primary">
-              Submit
-            </button>
-            <a id="login-register-link" href="/register">Don't have an account?</a>
-          </form>
-        </div>
+        <!-- END LARGE SCREENS -->
       </div>
+      <footer class="text-center text-white">
+        <div class="text-center p-3">@ 2021 Copyright</div>
+      </footer>
     </div>
 
     <script

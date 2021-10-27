@@ -195,23 +195,41 @@ nav {
 }
 
 footer {
-	background-color: #212432;;
-	margin-top: 1rem;
+	background-color: #212432;
 }
 
 /* Register Style */
 
-.self-defined {
-	font-family: 'Birthstone', cursive;
-  font-family: 'Dancing Script', cursive;
-  font-family: 'Open Sans', sans-serif;
-  background: url("../images/exercise.jpeg") no-repeat;
-  background-size: cover;
+.img-container-register-lg {
+	position: relative;
+	background: #000;
+	overflow: hidden;
+	height: 650px
 }
 
-.register h1 {
-	color: #f1f1f2;
-	font: bold;
+.img-container-register-lg h1 {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    color: #fff;
+    margin-top: 2rem;
+} 
+
+.img-container-register-lg img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+.img-container-register-lg .form {
+	text-align: center;
+    z-index: 2;
+    position: relative;
+    color: #fff;
 }
 
 #register-button {
@@ -228,6 +246,46 @@ footer {
 }
 
 /* Login Style */
+
+.img-container-login-lg {
+	position: relative;
+	background: #000;
+	overflow: hidden;
+	height: 650px
+}
+
+.img-container-login-lg h1 {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    color: #fff;
+    margin-top: 2rem;
+} 
+
+.img-container-login-lg img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+.img-container-login-lg .form {
+	text-align: center;
+    z-index: 2;
+    position: relative;
+    color: #fff;
+}
+
+form a {
+	color: #212432;
+}
+
+form a:hover {
+	color: #52597b;;
+}
 
 #login-button {
 	width: 100%;
