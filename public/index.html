@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">Calendar</a>
         <button
@@ -37,36 +37,41 @@
     </nav>
     <!-- MAIN BLOCK -->
     <div class="container-fluid">
-      <div id="main-background" class="row">
-        <div
-          class="d-none d-small-none d-md-block col-md-12 col-lg-12 col-xl-12"
-        >
-          <img id="main-background-img" src="../images/main-background.jpeg" />
-          <div id="centered">
-            <h1 class="text-light">TESTING</h1>
-            <p class="text-light">HERE'S SOME TEXT ABOUT THE SITE</p>
-          </div>
-
+      <div class = "row">
+        <!-- FOR LARGE SCREENS -->
+        <div class = "text-center d-none d-sm-none d-md-none d-lg-block col-lg-12 col-xl-12 img-container-lg">
+          <h1>Fitness Made Your Way!</h1>
+          <button class = "btn btn-primary">Click Me</button>
+          <img src = "../images/exercise.jpeg">
         </div>
-        <div class="d-block col-sm-12 d-md-none d-lg-none d-xl-none">
-          <img id="image-small" src="../images/main-background.jpeg" />
-          <div id="main-small">
-            <h1 class="text-light">TESTING</h1>
-            <p class="text-light">HERE'S SOME TEXT ABOUT THE SITE</p>
-          </div>
+        <!-- FOR MEDIUM/SMALL SCREENS -->
+        <div class = "text-center d-none d-sm-block d-md-block d-lg-none d-xl-none col-sm-12 col-md-12 img-container-md">
+          <h1>Fitness Made Your Way!</h1>
+          <button class = "btn btn-primary">Click Me</button>
+          <img src = "../images/exercise.jpeg">
+        </div>
+        <!-- FOR MOBILE SCREENS -->
+        <div class = "text-center d-block d-sm-none d-md-none d-lg-none d-xl-none col-xs-12 img-container-sm">
+          <h1>Fitness Made Your Way!</h1>
+          <button class = "btn btn-primary">Click Me</button>
+          <img src = "../images/exercise.jpeg">
         </div>
       </div>
       <div class="row main-info">
         <div class = "col-12">
-          <div id = "align-centered">
-            <h5>Centered Text for main information about fitness service</h5>
+          <div id = "align-centered" class = "text-center">
+            <h5>Create your fitness schedule on your terms.  Whether it's cardio around the neighborhood, going to the gym, or even yoga at home, we're here to help you on your journey to find your best self!
+            </h5>
           </div>
+        </div>
+        <div class = "text-center col-12">
+          <button class = "btn btn-outline-primary">Get Started Now!</button>
         </div>
       </div>
       <div class="row">
-        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <h5>MORE TEMP TEXT, FILL IN THIS PORTION LATER</h5>
-          <p>HERE'S SOME LIGHTER TEXT TO FILL IN LATER</p>
+        <div class="text-center col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-4">
+          <h5>Ready to get started?</h5>
+          <p>Register now to start building your plan!</p>
         </div>
       </div>
       <div class="row">
@@ -74,45 +79,34 @@
           <div class="card">
             <img class="card-img-top" src="../images/exercise.jpeg" alt="Card image cap" />
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title">Add Workout</h5>
               <p class="card-text">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
+                Already signed up?  Manage your workouts in your dashboard!
               </p>
             </div>
             <div class="card-footer">
               <a href="/login" class = "btn btn-primary stretched-link">
-                LOGIN
+                Login
               </a>
             </div>
           </div>
           <div class="card">
             <img class="card-img-top" src="../images/exercise.jpeg" alt="Card image cap" />
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+              <h5 class="card-title">Sign up now!</h5>
               <p class="card-text">
-                This card has supporting text below as a natural lead-in to
-                additional content.
+                Create your account and start working out!
               </p>
             </div>
             <div class="card-footer">
               <a href="/register" class = "btn btn-primary stretched-link">
-                REGISTER
+                Register
               </a>
             </div>
           </div>
         </div>
       </div>
-      <div class = "row">
-        <div class = "col-6">
-          <h5>READY TO GET STARTED?</h5>
-        </div>
-        <div class = "col-6">
-          <button class = "btn btn-primary">GET STARTED</button>
-        </div>
-      </div>
-      <footer class="bg-dark text-center text-white">
+      <footer class="text-center text-white">
         <div class="text-center p-3">@ 2021 Copyright</div>
       </footer>
     </div>
