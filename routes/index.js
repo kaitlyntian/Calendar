@@ -36,4 +36,9 @@ router.post("/register", async (req, res) => {
   }
 });
 
+router.get("/create/workout",(req, res) => {
+  res.redirect("/create-workout.html");
+});
+
+
 module.exports = router;
