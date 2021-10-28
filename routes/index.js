@@ -1,8 +1,11 @@
 let express = require("express");
 let router = express.Router();
 
+let myDB = require("../db/myDB.js");
+
 /* GET home page. */
 router.get("/", function (req, res, next) {
+
   res.render("index", { title: "Express" });
 });
 
@@ -12,6 +15,25 @@ router.get("/register", (req, res) => {
 
 router.get("/login", (req, res) => {
   res.redirect("/login.html");
+});
+
+router.post("/register", async (req, res) => {
+  try {
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const pwd = req.body.pwd;
+
+    const msg = await myDB.registerUser(firstName, lastName, email, pwd);
+    if (msg === "success") {
+      res.sendStatus(200);
+    } else {
+      res.status(409).send({register: msg});
+    }
+  } catch (e) {
+    console.error("Error", e);
+    res.status(400).send({ err: e });
+  }
 });
 
 module.exports = router;

@@ -2,18 +2,19 @@ window.onload = function () {
   document.getElementById("login-button").addEventListener("click", register);
 };
 
-function register() {
+async function register(event) {
+  event.preventDefault();
   console.log("start");
   let firstName = document.getElementById("Input-FristName").value;
   let lastName = document.getElementById("Input-LastName").value;
   let email = document.getElementById("Input-Email-Register").value;
   let pwd = document.getElementById("Input-Password-Register").value;
 
-  if (firstName.length == 0 || lastName.length == 0) {
+  if (firstName.length === 0 || lastName.length === 0) {
     alert("First Name and Last Name cannot be null");
     return;
   }
-  if (email.length == 0) {
+  if (email.length === 0) {
     alert("Email address cannot be null");
     return;
   }
@@ -22,29 +23,26 @@ function register() {
     return;
   }
 
-  let data = {
-    firstName, lastName, email, pwd,
+  const data = {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    pwd: pwd,
   };
   console.log(data);
-  $.ajax({
-    type: "POST",
-    url: "http://localhost:3000/register",
-    data: data,
-    success: (res) => {
-      console.log(res);
-      if (res.code == 200) {
-        alert(res.msg);
-        document.location.href = "index.html";
-      } else if (res.code == 201) {
-        alert(res.msg);
-        document.location.href = "register.html";
-      } else {
-        alert(res.msg);
-        document.location.href = "register.html";
-      }
-    },
-    error: (err) => {
-      console.log(err);
-    },
-  });
+
+  const registerData = async (data) => {
+    await fetch("/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+  };
+  if (!registerData.ok) {
+    alert("Somgthing's wrong");
+  } else {
+    window.location.assign("/logIn.html");
+  }
 }
