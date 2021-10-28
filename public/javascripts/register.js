@@ -1,3 +1,4 @@
+/*
 window.onload = function () {
   document.getElementById("login-button").addEventListener("click", register);
 };
@@ -30,7 +31,7 @@ async function register(event) {
     pwd: pwd,
   };
   console.log(data);
-
+  
   const registerData = async (data) => {
     await fetch("/register", {
       method: "POST",
@@ -45,4 +46,6 @@ async function register(event) {
   } else {
     window.location.assign("/logIn.html");
   }
+  
 }
+*/

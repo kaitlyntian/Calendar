@@ -21,7 +21,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body class="self-defined">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container-fluid">
         <a class="navbar-brand navigation" href="/">Calendar</a>
         <button
@@ -48,7 +48,7 @@
         <div class = "text-center col-12 img-container-register-lg">
           <h1>Register</h1>
           <div class="col-md-4 offset-md-4 form">
-            <form action="/register" method="POST">
+            <form action="/register" method="post">
               <div class="mb-3">
                 <label for="Input-FirstName" class="form-label"
                   >First Name</label
@@ -57,6 +57,7 @@
                   type="text"
                   class="form-control"
                   id="Input-FristName"
+                  name="firstName"
                 />
               </div>
               <div class="mb-3">
@@ -67,6 +68,7 @@
                   type="text"
                   class="form-control"
                   id="Input-LastName"
+                  name="lastName"
                 />
               </div>
               <div class="mb-3">
@@ -78,6 +80,7 @@
                   class="form-control"
                   id="Input-Email-Register"
                   aria-describedby="emailHelp"
+                  name="email"
                 />
                 <div id="emailHelp" class="text-light form-text">
                   We'll never share your email with anyone else.
@@ -91,6 +94,7 @@
                   type="password"
                   class="form-control"
                   id="Input-Password-Register"
+                  name="pwd"
                 />
               </div>
               <button type="submit" id = "login-button" class="btn btn-primary">Submit</button>

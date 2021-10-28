@@ -23,10 +23,10 @@ router.post("/register", async (req, res) => {
     const lastName = req.body.lastName;
     const email = req.body.email;
     const pwd = req.body.pwd;
-
+    console.log(req.body)
     const msg = await myDB.registerUser(firstName, lastName, email, pwd);
     if (msg === "success") {
-      res.sendStatus(200);
+      res.redirect("/");
     } else {
       res.status(409).send({register: msg});
     }
