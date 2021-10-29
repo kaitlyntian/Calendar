@@ -1,51 +1,54 @@
 /*
-window.onload = function () {
-  document.getElementById("login-button").addEventListener("click", register);
-};
+const firstName = document.getElementById("Input-FristName");
+const lastName = document.getElementById("Input-LastName");
+const email = document.getElementById("Input-Email-Register");
+const pwd = document.getElementById("Input-Password-Register");
+
+email.addEventListener("input", function (event) {
+  if (email.validity.typeMismatch) {
+    email.setCustomValidity("I am expecting an e-mail address!");
+  } else {
+    email.setCustomValidity("");
+  }
+});
 
 async function register(event) {
-  event.preventDefault();
   console.log("start");
-  let firstName = document.getElementById("Input-FristName").value;
-  let lastName = document.getElementById("Input-LastName").value;
-  let email = document.getElementById("Input-Email-Register").value;
-  let pwd = document.getElementById("Input-Password-Register").value;
-
-  if (firstName.length === 0 || lastName.length === 0) {
+  
+  if (firstName.value.length === 0 || lastName.value.length === 0) {
+    event.preventDefault();
     alert("First Name and Last Name cannot be null");
     return;
   }
-  if (email.length === 0) {
-    alert("Email address cannot be null");
+  if(!email.validity.valid ||email.value.length === 0) {
+    event.preventDefault();
     return;
   }
-  if (pwd.length < 6) {
+  if (pwd.value.length < 6) {
+    event.preventDefault();
     alert("Password should not less than 6 characters");
     return;
   }
 
   const data = {
-    firstName: firstName,
-    lastName: lastName,
-    email: email,
-    pwd: pwd,
+    firstName: firstName.value,
+    lastName: lastName.vlaue,
+    email: email.value,
+    pwd: pwd.value,
   };
-  console.log(data);
-  
-  const registerData = async (data) => {
-    await fetch("/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data)
   };
-  if (!registerData.ok) {
-    alert("Somgthing's wrong");
-  } else {
-    window.location.assign("/logIn.html");
-  }
-  
+
+  try {
+    await fetch("/register", options);
+  } catch(e) {
+    console.log(e);
+  };
 }
 */

@@ -20,9 +20,20 @@ client.connect(function (err) {
 let users = [
   { firstName: "Jennifer", lastName: "Xiao", email: "123@gmail.com", pwd: "123456"}];
 
-async function registerUser(firstName, lastName, email, pwd) {
-  console.log(users);
-  const existUser = users.includes(email);
+let arrangements = [
+  {email: "123@gmail.com", startTime: "2021-10-24T16:00:00Z", endTime: "2021-10-29T18:00:00Z", type: "Stretch", finish: "yes", note: ""},
+  {email: "123@gmail.com", startTime: "2021-10-28T16:00:00Z", endTime: "2021-10-28T18:00:00Z", type: "Cardio", finish: "No", note: ""},
+  {email: "123@gmail.com", startTime: "2021-10-29T16:00:00Z", endTime: "2021-10-29T18:00:00Z", type: "Chest", finish: "No", note: ""},
+  {email: "123@gmail.com", startTime: "2021-10-29T16:00:00Z", endTime: "2021-10-29T18:00:00Z", type: "Arms", finish: "No", note: ""}];
+
+function registerUser(firstName, lastName, email, pwd) {
+  let existUser = false;
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].email === email) {
+      existUser = true;
+      break;
+    }
+  }
   if (existUser) {
     return "The email exists, please use another email address";
   }
@@ -37,6 +48,27 @@ async function registerUser(firstName, lastName, email, pwd) {
   return "success";
 }
 
+function userLogin(email, pwd) {
+  let existUser = false;
+  let user;
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].email === email) {
+      existUser = true;
+      user = users[i];
+      break;
+    }
+  }
+  if (!existUser) {
+    return "User not exists, please register first";
+  }
+  if (user.pwd === pwd) {
+    return "success";
+  } else {
+    return "Wrong password or email address, please try again";
+  }
+}
+
 module.exports = {
-  registerUser
+  registerUser,
+  userLogin
 };
