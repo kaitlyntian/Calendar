@@ -5,7 +5,6 @@ let myDB = require("../db/myDB.js");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-
   res.render("index", { title: "Express" });
 });
 
@@ -55,6 +54,10 @@ router.post("/login", async (req, res) => {
 
 router.get("/create/workout",(req, res) => {
   res.redirect("/create-workout.html");
+});
+
+router.get("/user/dashboard", (req, res) => {
+  res.redirect("/dashboard.html");
 });
 
 module.exports = router;

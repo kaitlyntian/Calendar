@@ -24,6 +24,7 @@ app.use(
     secret: "info for calendar project",
     resave: false, // don't save session if unmodified
     saveUninitialized: false, // don't create session until something stored
+    cookie: {}
   })
 );
 
