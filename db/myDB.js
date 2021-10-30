@@ -49,16 +49,16 @@ function registerUser(firstName, lastName, email, pwd) {
 }
 
 function userLogin(email, pwd) {
-  let existUser = false;
+  let exist = false;
   let user;
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].email === email) {
-      existUser = true;
-      user = users[i];
+  for (let j = 0; j < users.length; j++) {
+    if (users[j].email === email) {
+      exist = true;
+      user = users[j];
       break;
     }
   }
-  if (!existUser) {
+  if (!exist) {
     return "User not exists, please register first";
   }
   if (user.pwd === pwd) {

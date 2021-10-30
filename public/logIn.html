@@ -48,7 +48,7 @@
         <div class = "text-center col-12 img-container-login-lg">
           <h1>Login</h1>
           <div class="col-md-4 offset-md-4 form">
-            <form action="/login" method="post">
+            <form onsubmit="userLogin(event)">
               <div class="mb-3">
                 <label for="Input-Email-Login" class="form-label">Email address</label>
                 <input
@@ -56,7 +56,7 @@
                   class="form-control"
                   id="Input-Email-Login"
                   aria-describedby="emailHelp"
-                  name="email_login"
+                  name="email"
                 />
               </div>
               <div class="mb-3">
@@ -65,7 +65,7 @@
                   type="password"
                   class="form-control"
                   id="Input-Password-Login"
-                  name="pwd_login"
+                  name="pwd"
                 />
               </div>
               <button type="submit" class="submit-button btn btn-primary">
@@ -93,5 +93,6 @@
       integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
       crossorigin="anonymous"
     ></script>
+    <script type="text/javascript" src="./javascripts/login.js"></script>
   </body>
 </html>
