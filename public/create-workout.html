@@ -41,7 +41,7 @@
         <div class = "text-center col-12 img-container-create-workout-lg">
           <h1>Create Workout</h1>
           <div class = "col-md-4 offset-md-4 form">
-            <form action="/create/workout/add" method = "post">
+            <form onsubmit="createWorkout(event)">
               <div class="mb-3">
                 <label for="Input-Type" class = "form-label">
                   Workout Type
@@ -100,5 +100,6 @@
       integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
       crossorigin="anonymous"
     ></script>
+    <script type="text/javascript" src="./javascripts/create-workout.js"></script>
   </body>
 </html>

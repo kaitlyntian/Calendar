@@ -16,10 +16,12 @@ async function userLogin(event) {
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(data)
   };
+
   const rawData = await fetch("/login", options);
   if (rawData.status == 200) {
-    window.location.assign("dashboard.html");
+    window.location.assign("/user/dashboard");
   } else {
+    const response = await rawData.json();
     alert("Something's wrong, please try again");
   }
 }

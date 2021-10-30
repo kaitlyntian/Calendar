@@ -59,12 +59,34 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/create/workout",(req, res) => {
+router.get("/create/workout", auth, (req, res) => {
   res.redirect("/create-workout.html");
+});
+
+router.post("/create/workout", auth, async (req, res) => {
+  try {
+    const type = req.body.type;
+    const date = req.body.date;
+    const time = req.body.time;
+    const notes = req.body.notes;
+    const email = req.session.email;
+    console.log(email);
+    
+    const msg = await myDB.createWorkout(email, type, date, time, notes);
+    if (msg === "success") {
+      res.sendStatus(200);
+    } else {
+      res.status(409).send({createWorkout: msg});
+    }
+  } catch (e) {
+    res.status(400).send({ err: e });
+  }
 });
 
 router.get("/user/dashboard", auth, (req, res) => {
   res.redirect("/dashboard.html");
 });
+
+
 
 module.exports = router;

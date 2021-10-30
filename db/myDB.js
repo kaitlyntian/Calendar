@@ -21,12 +21,12 @@ let users = [
   { firstName: "Jennifer", lastName: "Xiao", email: "123@gmail.com", pwd: "123456"}];
 
 let arrangements = [
-  {email: "123@gmail.com", startTime: "2021-10-24T16:00:00Z", endTime: "2021-10-29T18:00:00Z", type: "Stretch", finish: "yes", note: ""},
-  {email: "123@gmail.com", startTime: "2021-10-28T16:00:00Z", endTime: "2021-10-28T18:00:00Z", type: "Cardio", finish: "No", note: ""},
-  {email: "123@gmail.com", startTime: "2021-10-29T16:00:00Z", endTime: "2021-10-29T18:00:00Z", type: "Chest", finish: "No", note: ""},
-  {email: "123@gmail.com", startTime: "2021-10-29T16:00:00Z", endTime: "2021-10-29T18:00:00Z", type: "Arms", finish: "No", note: ""}];
+  {email: "123@gmail.com", date: "2021-10-24", time: "18:00:00", type: "Yoga", finish: "yes", note: ""},
+  {email: "123@gmail.com", date: "2021-10-28", time: "18:00:00", type: "Cardio", finish: "No", note: ""},
+  {email: "123@gmail.com", date: "2021-10-29", time: "18:00:00", type: "Yoga", finish: "No", note: ""},
+  {email: "123@gmail.com", date: "2021-10-30", time: "18:00:00", type: "Go to Gym", finish: "No", note: ""}];
 
-function registerUser(firstName, lastName, email, pwd) {
+function containUser(email) {
   let existUser = false;
   for (let i = 0; i < users.length; i++) {
     if (users[i].email === email) {
@@ -34,7 +34,11 @@ function registerUser(firstName, lastName, email, pwd) {
       break;
     }
   }
-  if (existUser) {
+  return existUser;
+}
+
+function registerUser(firstName, lastName, email, pwd) {
+  if (containUser(email)) {
     return "The email exists, please use another email address";
   }
   const newData = {
@@ -68,7 +72,18 @@ function userLogin(email, pwd) {
   }
 }
 
+function createWorkout(email, type, date, time, notes) {
+  if (!containUser(email)) {
+    return "Sorry, please log in first";
+  }
+  const newWorkout = { email: email, type: type, date: date, time: time, notes: notes };
+  arrangements.push(newWorkout);
+  console.log("Workout: ", arrangements);
+  return "success";
+}
+
 module.exports = {
   registerUser,
-  userLogin
+  userLogin,
+  createWorkout
 };
