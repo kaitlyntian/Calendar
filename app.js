@@ -5,6 +5,7 @@ let logger = require("morgan");
 let session = require("express-session");
 let bodyParser= require("body-parser");
 let cors = require("cors");
+let fullcalendar = require("fullcalendar");
 
 let indexRouter = require("./routes/index");
 
@@ -16,7 +17,7 @@ app.use(cors({credentials: true, origin: true}));
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 

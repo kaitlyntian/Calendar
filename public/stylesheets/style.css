@@ -47,6 +47,10 @@ body {
 	color: white;
 }
 
+.navigation {
+	padding-left: 20px;
+}
+
 nav {
 	background-color: #212432;
 	padding: 0.5rem;
@@ -326,7 +330,44 @@ footer {
     position: relative;
     color: #fff;
 }
-/* Navbar */
-.navigation {
-	padding-left: 20px;
+
+/* USER DASHBOARD */
+
+#calendar-row {
+	padding: 2rem;
 }
+
+#user-dashboard-row {
+	height: 100%;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+#dashboard-left {
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+.card-dashboard {
+	margin-left: 0rem;
+	margin-right: 0rem;
+	margin-top: 1rem;
+}
+
+.btn-dashboard {
+	width: 100%;
+}
+
+.completed {
+	color: lightgreen;
+}
+
+.incompleted {
+	color: red;
+}
+
+.upcoming {
+	color: #d5d534;
+}
+
+

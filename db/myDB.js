@@ -23,8 +23,8 @@ let users = [
 let arrangements = [
   {email: "123@gmail.com", date: "2021-10-24", time: "18:00:00", type: "Yoga", finish: "yes", note: ""},
   {email: "123@gmail.com", date: "2021-10-28", time: "18:00:00", type: "Cardio", finish: "No", note: ""},
-  {email: "123@gmail.com", date: "2021-10-29", time: "18:00:00", type: "Yoga", finish: "No", note: ""},
-  {email: "123@gmail.com", date: "2021-10-30", time: "18:00:00", type: "Go to Gym", finish: "No", note: ""}];
+  {email: "123@gmail.com", date: "2021-10-29", time: "18:00:00", type: "Yoga", finish: "No", note: "Test note"},
+  {email: "123@gmail.com", date: "2021-11-5", time: "18:00:00", type: "Go to Gym", finish: "No", note: "Testing"}];
 
 function containUser(email) {
   let existUser = false;
