@@ -84,9 +84,16 @@ router.post("/create/workout", auth, async (req, res) => {
 });
 
 router.get("/user/dashboard", auth, (req, res) => {
-  res.redirect("/dashboard.html");
+  try {
+    let email = req.session.email;
+    const arrangement = await myDB.getData(email);
+    res.send({ files: files });
+  } catch (e) {
+    console.log("Error", e);
+    res.status(400).send({err: e});
+  }
+
+  //res.redirect("/dashboard.html");
 });
-
-
 
 module.exports = router;

@@ -82,8 +82,28 @@ function createWorkout(email, type, date, time, notes) {
   return "success";
 }
 
+function getData(email) {
+  if (!containUser(email)) {
+    return "Sorry, please log in first";
+  }
+  let arrangement = [];
+  for (let i = 0; i < arrangements.length; i++) {
+    if (arrangements[i].email === email) {
+      arrangement.pusuh(arrangements[i]);
+    }
+  }
+  let sortedArrangement = arrangement.sort((a, b) => {
+    if (a.date > b.date) {return -1;}
+    if (a.date < b.date) {return 1;}
+    return 0;
+  });
+  console.log(sortedArrangement);
+  return sortedArrangement;
+}
+
 module.exports = {
   registerUser,
   userLogin,
-  createWorkout
+  createWorkout,
+  getData
 };
