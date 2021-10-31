@@ -89,7 +89,7 @@ function getData(email) {
   let arrangement = [];
   for (let i = 0; i < arrangements.length; i++) {
     if (arrangements[i].email === email) {
-      arrangement.pusuh(arrangements[i]);
+      arrangement.push(arrangements[i]);
     }
   }
   let sortedArrangement = arrangement.sort((a, b) => {

@@ -19,7 +19,7 @@ async function userLogin(event) {
 
   const rawData = await fetch("/login", options);
   if (rawData.status == 200) {
-    window.location.assign("/user/dashboard");
+    window.location.assign("dashboard.html");
   } else {
     const response = await rawData.json();
     alert("Something's wrong, please try again");
