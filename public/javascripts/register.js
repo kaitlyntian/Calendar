@@ -3,6 +3,7 @@ const firstName = document.getElementById("Input-FristName");
 const lastName = document.getElementById("Input-LastName");
 const email = document.getElementById("Input-Email-Register");
 const pwd = document.getElementById("Input-Password-Register");
+const userName = document.getElementById("Input-UserName-Register");
 
 email.addEventListener("input", function (event) {
   event.preventDefault();
@@ -32,6 +33,7 @@ async function register(event) {
   const data = {
     firstName: firstName.value,
     lastName: lastName.value,
+    userName: userName.value,
     email: email.value,
     pwd: pwd.value,
   };

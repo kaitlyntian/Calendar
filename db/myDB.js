@@ -18,13 +18,13 @@ client.connect(function (err) {
 });
 */
 let users = [
-  { firstName: "Jennifer", lastName: "Xiao", email: "123@gmail.com", pwd: "123456"}];
+  { firstName: "Jennifer", lastName: "Xiao", userName: "Jenn", email: "123@gmail.com", pwd: "123456"}];
 
 let arrangements = [
-  {email: "123@gmail.com", date: "2021-10-24", time: "18:00:00", type: "Yoga", finish: "yes", note: ""},
-  {email: "123@gmail.com", date: "2021-10-28", time: "18:00:00", type: "Cardio", finish: "No", note: ""},
-  {email: "123@gmail.com", date: "2021-10-29", time: "18:00:00", type: "Yoga", finish: "No", note: "Test note"},
-  {email: "123@gmail.com", date: "2021-11-5", time: "18:00:00", type: "Go to Gym", finish: "No", note: "Testing"}];
+  {email: "123@gmail.com", date: "2021-10-24", time: "18:00:00", duration: "15", type: "Yoga", finish: "yes", note: ""},
+  {email: "123@gmail.com", date: "2021-10-28", time: "18:00:00", duration: "30", type: "Cardio", finish: "No", note: ""},
+  {email: "123@gmail.com", date: "2021-10-29", time: "18:00:00", duration: "60", type: "Yoga", finish: "No", note: "Test note"},
+  {email: "123@gmail.com", date: "2021-11-5", time: "18:00:00", duration: "90", type: "Go to Gym", finish: "No", note: "Testing"}];
 
 function containUser(email) {
   let existUser = false;
@@ -37,13 +37,14 @@ function containUser(email) {
   return existUser;
 }
 
-function registerUser(firstName, lastName, email, pwd) {
+function registerUser(firstName, lastName, userName, email, pwd) {
   if (containUser(email)) {
     return "The email exists, please use another email address";
   }
   const newData = {
     firstName: firstName,
     lastName: lastName,
+    userName: userName,
     email: email,
     pwd: pwd
   };
@@ -72,11 +73,11 @@ function userLogin(email, pwd) {
   }
 }
 
-function createWorkout(email, type, date, time, notes) {
+function createWorkout(email, type, date, time, duration, notes) {
   if (!containUser(email)) {
     return "Sorry, please log in first";
   }
-  const newWorkout = { email: email, type: type, date: date, time: time, notes: notes };
+  const newWorkout = { email: email, type: type, date: date, time: time, duration: duration, notes: notes };
   arrangements.push(newWorkout);
   console.log("Workout: ", arrangements);
   return "success";
@@ -101,9 +102,23 @@ function getData(email) {
   return sortedArrangement;
 }
 
+function getUserData(email) {
+  if(!containUser(email)) {
+    return "Sorry, please log in first";
+  }
+  let userData;
+  for(let i = 0; i < users.length; i++) {
+    if(users[i].email === email) {
+      userData = users[i];
+    }
+  }
+  return userData;
+}
+
 module.exports = {
   registerUser,
   userLogin,
   createWorkout,
-  getData
+  getData,
+  getUserData
 };

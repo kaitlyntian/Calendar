@@ -1,4 +1,5 @@
 const divFiles = document.querySelector(".workouts");
+const userName = document.getElementById("userName");
 
 function renderFile(file) {
 
@@ -44,6 +45,7 @@ async function loadFiles() {
   divFiles.innerHTML = "";
   const resRaw = await fetch("/user/dashboard");
   const res = await resRaw.json();
+  userName.innerHTML = res.user.userName;
   res.files.forEach(renderFile);
 }
 
