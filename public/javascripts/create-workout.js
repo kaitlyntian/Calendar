@@ -2,6 +2,7 @@ const type = document.getElementById("Input-Type");
 const date = document.getElementById("Input-Date");
 const time = document.getElementById("Input-Time");
 const notes = document.getElementById("Input-Notes");
+const duration = document.getElementById("Input-Duration");
 
 async function createWorkout(event) {
   event.preventDefault();
@@ -20,6 +21,7 @@ async function createWorkout(event) {
     type: type.value,
     date: date.value,
     time: time.value,
+    duration: duration.value,
     notes: notes.value,
   };
   console.log(data);
@@ -31,7 +33,7 @@ async function createWorkout(event) {
   };
   const rawData = await fetch("/create/workout", options);
   if (rawData.status == 200) {
-    window.location.assign("/user/dashboard");
+    window.location.assign("dashboard.html");
   } else {
     alert("Something's wrong, please try again");
   }

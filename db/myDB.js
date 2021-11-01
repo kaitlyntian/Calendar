@@ -73,11 +73,11 @@ function userLogin(email, pwd) {
   }
 }
 
-function createWorkout(email, type, date, time, duration, notes) {
+function createWorkout(email, type, date, time, duration, note) {
   if (!containUser(email)) {
     return "Sorry, please log in first";
   }
-  const newWorkout = { email: email, type: type, date: date, time: time, duration: duration, notes: notes };
+  const newWorkout = { email: email, type: type, date: date, time: time, duration: duration, note: note, finish: "No" };
   arrangements.push(newWorkout);
   console.log("Workout: ", arrangements);
   return "success";

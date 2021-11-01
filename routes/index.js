@@ -70,11 +70,11 @@ router.post("/create/workout", auth, async (req, res) => {
     const date = req.body.date;
     const time = req.body.time;
     const duration = req.body.duration;
-    const notes = req.body.notes;
+    const note = req.body.notes;
     const email = req.session.email;
     console.log(email);
     
-    const msg = await myDB.createWorkout(email, type, date, time, duration, notes);
+    const msg = await myDB.createWorkout(email, type, date, time, duration, note);
     if (msg === "success") {
       res.sendStatus(200);
     } else {
