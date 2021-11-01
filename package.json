@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node ./bin/www",
-    //./node_modules/nodemon/bin/nodemon.js
+    "start": "node ./node_modules/nodemon/bin/nodemon.js ./bin/www",
+    //
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
