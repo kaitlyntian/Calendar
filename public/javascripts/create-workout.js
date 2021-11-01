@@ -4,9 +4,13 @@ const time = document.getElementById("Input-Time");
 const notes = document.getElementById("Input-Notes");
 const duration = document.getElementById("Input-Duration");
 
+/*
+Checks form data for valid inputs, then passes data to server
+Waits for response
+*/
+
 async function createWorkout(event) {
   event.preventDefault();
-  console.log("start");
   
   if (type.value.length === 0) {
     alert("Please select the exercise type");
@@ -24,7 +28,6 @@ async function createWorkout(event) {
     duration: duration.value,
     notes: notes.value,
   };
-  console.log(data);
   const options = {
     method: "post",
     credentials: "include",

@@ -5,6 +5,10 @@ const email = document.getElementById("Input-Email-Register");
 const pwd = document.getElementById("Input-Password-Register");
 const userName = document.getElementById("Input-UserName-Register");
 
+/* 
+Checker for if we have a valid email, passes and listens for response from server 
+*/
+
 email.addEventListener("input", function (event) {
   event.preventDefault();
   if (email.validity.typeMismatch) {
@@ -13,7 +17,10 @@ email.addEventListener("input", function (event) {
     email.setCustomValidity("");
   }
 });
-
+/*
+Registration form checking.  Checks for valid inputs.
+If inputs are good, we pass data to server, and wait for valid response
+*/
 async function register(event) {
   event.preventDefault();
   console.log("start");

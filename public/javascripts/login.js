@@ -1,7 +1,9 @@
-
+/*
+checks for valid form inputs.  If valid, we pass to server
+and wait for response.
+*/
 async function userLogin(event) {
   event.preventDefault();
-  console.log("start");
   const email = document.getElementById("Input-Email-Login");
   const pwd = document.getElementById("Input-Password-Login");
 

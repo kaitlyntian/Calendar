@@ -3,6 +3,7 @@ let router = express.Router();
 
 let myDB = require("../db/myDB.js");
 
+/* AUTHENTICATE USER */
 const auth = (req, res, next) => {
   if (!req.session.email) {
     return res.redirect("/logIn.html");
@@ -10,19 +11,60 @@ const auth = (req, res, next) => {
   next();
 };
 
-/* GET home page. */
+/*****************
+GET ROUTES 
+******************/
+
+/* GET HOME PAGE */
 router.get("/", function (req, res) {
   res.render("index", { title: "Express" });
 });
-
+/* GET REGISTER PAGE */
 router.get("/register", (req, res) => {
   res.redirect("/register.html");
 });
-
+/* GET LOGIN PAGE */
 router.get("/login", (req, res) => {
   res.redirect("/logIn.html");
 });
+/* GET WORKOUTS CREATION PAGE */
+router.get("/create/workout", auth, (req, res) => {
+  res.redirect("/create-workout.html");
+});
+/* GET DASHBOARD */
+router.get("/user/dashboard", auth, async(req, res) => {
+  try {
+    let email = req.session.email;
+    const arrangement = await myDB.getData(email);
+    const userData = await myDB.getUserData(email);
+    console.log(userData);
+    res.send({ files: arrangement, user: userData },);
+    //res.redirect("/dashboard.html");
+  } catch (e) {
+    console.log("Error", e);
+    res.status(400).send({err: e});
+  }
+});
+/* LOGOUT */
+router.get("userLogout", auth, async(req, res) => {
+  try {
+    delete req.session.email;
+  } catch(e) {
+    console.error("Error", e);
+    res.status(400).send({err: e});
+  }
+});
 
+/*****************
+END GET ROUTES 
+******************/
+
+
+/*****************
+POST ROUTES 
+******************/
+
+/* REGISTER USER */
 router.post("/register", async (req, res) => {
   try {
     const firstName = req.body.firstName;
@@ -41,7 +83,7 @@ router.post("/register", async (req, res) => {
     res.status(400).send({ err: e });
   }
 });
-
+/* LOGIN USER */
 router.post("/login", async (req, res) => {
   try {
     const email = req.body.email;
@@ -59,11 +101,7 @@ router.post("/login", async (req, res) => {
     res.status(400).send({ err: e });
   }
 });
-
-router.get("/create/workout", auth, (req, res) => {
-  res.redirect("/create-workout.html");
-});
-
+/* CREATE WORKOUT */
 router.post("/create/workout", auth, async (req, res) => {
   try {
     const type = req.body.type;
@@ -85,27 +123,8 @@ router.post("/create/workout", auth, async (req, res) => {
   }
 });
 
-router.get("/user/dashboard", auth, async(req, res) => {
-  try {
-    let email = req.session.email;
-    const arrangement = await myDB.getData(email);
-    const userData = await myDB.getUserData(email);
-    console.log(userData);
-    res.send({ files: arrangement, user: userData },);
-    //res.redirect("/dashboard.html");
-  } catch (e) {
-    console.log("Error", e);
-    res.status(400).send({err: e});
-  }
-});
-
-router.get("userLogout", auth, async(req, res) => {
-  try {
-    delete req.session.email;
-  } catch(e) {
-    console.error("Error", e);
-    res.status(400).send({err: e});
-  }
-});
+/*****************
+END POST ROUTES 
+******************/
 
 module.exports = router;

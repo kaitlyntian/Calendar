@@ -1,6 +1,10 @@
 const divFiles = document.querySelector(".workouts");
 const userName = document.getElementById("userName");
 
+/* 
+Appends data from files grabbed to html block .workouts
+Checks if workout has been finished or not    
+*/
 function renderFile(file) {
 
   const divFile = document.createElement("div");
@@ -35,6 +39,10 @@ function renderFile(file) {
   }
   divFiles.appendChild(divFile);
 }
+/* 
+Grabs files from database, data is grabbed from workouts, and user data
+helps render username to html, as well as workout cards
+*/
 async function loadFiles() {
   divFiles.innerHTML = "";
   const resRaw = await fetch("/user/dashboard");
@@ -43,6 +51,9 @@ async function loadFiles() {
   res.files.forEach(renderFile);
 
 }
+/*
+Logout function.  Kills session.
+*/
 async function userLogout() {
   const resRaw = await fetch("userLogout");
   if (resRaw.status === 401) {

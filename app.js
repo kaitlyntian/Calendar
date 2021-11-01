@@ -5,7 +5,6 @@ let logger = require("morgan");
 let session = require("express-session");
 let bodyParser= require("body-parser");
 let cors = require("cors");
-let fullcalendar = require("fullcalendar");
 
 let indexRouter = require("./routes/index");
 

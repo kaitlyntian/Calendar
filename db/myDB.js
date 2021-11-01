@@ -1,4 +1,5 @@
-/*//MONGODB CLIENT
+/*
+MONGODB CLIENT -> KEEP FOR WHEN U?SING MONGODB
 const MongoClient = require("mongodb").MongoClient;
 const url = "mongodb://127.0.0.1:27017";
 const dbName = "calendar";
@@ -17,6 +18,8 @@ client.connect(function (err) {
   }
 });
 */
+
+/* DUMMY DATA */
 let users = [
   { firstName: "Jennifer", lastName: "Xiao", userName: "Jenn", email: "123@gmail.com", pwd: "123456"}];
 
@@ -26,6 +29,9 @@ let arrangements = [
   {email: "123@gmail.com", date: "2021-10-29", time: "18:00:00", duration: "60", type: "Yoga", finish: "No", note: "Test note"},
   {email: "123@gmail.com", date: "2021-11-5", time: "18:00:00", duration: "90", type: "Go to Gym", finish: "No", note: "Testing"}];
 
+/* END DUMMY DATA */
+
+/* CHECK FOR OF USER EXISTS */
 function containUser(email) {
   let existUser = false;
   for (let i = 0; i < users.length; i++) {
@@ -37,6 +43,7 @@ function containUser(email) {
   return existUser;
 }
 
+/* REGISTER NEW USER INTO DB */
 function registerUser(firstName, lastName, userName, email, pwd) {
   if (containUser(email)) {
     return "The email exists, please use another email address";
@@ -53,6 +60,7 @@ function registerUser(firstName, lastName, userName, email, pwd) {
   return "success";
 }
 
+/* LOGIN USER */
 function userLogin(email, pwd) {
   let exist = false;
   let user;
@@ -73,6 +81,7 @@ function userLogin(email, pwd) {
   }
 }
 
+/* CREATE WORKOUT TO DB */
 function createWorkout(email, type, date, time, duration, note) {
   if (!containUser(email)) {
     return "Sorry, please log in first";
@@ -83,6 +92,7 @@ function createWorkout(email, type, date, time, duration, note) {
   return "success";
 }
 
+/* GRAB DATA FOR WORKOUTS */
 function getData(email) {
   if (!containUser(email)) {
     return "Sorry, please log in first";
@@ -102,6 +112,7 @@ function getData(email) {
   return sortedArrangement;
 }
 
+/* GET DATA FOR USER */
 function getUserData(email) {
   if(!containUser(email)) {
     return "Sorry, please log in first";
