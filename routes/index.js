@@ -99,4 +99,13 @@ router.get("/user/dashboard", auth, async(req, res) => {
   }
 });
 
+router.get("userLogout", auth, async(req, res) => {
+  try {
+    delete req.session.email;
+  } catch(e) {
+    console.error("Error", e);
+    res.status(400).send({err: e});
+  }
+});
+
 module.exports = router;

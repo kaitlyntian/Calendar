@@ -3,10 +3,6 @@ const userName = document.getElementById("userName");
 
 function renderFile(file) {
 
-  /*
-  ADDING CODE FOR IF COMPLETED IS YES
-  */
-
   const divFile = document.createElement("div");
 
   if(file.finish == "yes") {
@@ -37,16 +33,21 @@ function renderFile(file) {
     </div>
     `;
   }
-
   divFiles.appendChild(divFile);
 }
-
 async function loadFiles() {
   divFiles.innerHTML = "";
   const resRaw = await fetch("/user/dashboard");
   const res = await resRaw.json();
   userName.innerHTML = res.user.userName;
   res.files.forEach(renderFile);
+
+}
+async function userLogout() {
+  const resRaw = await fetch("userLogout");
+  if (resRaw.status === 401) {
+    window.location.assign("/login");
+  }
 }
 
 loadFiles();

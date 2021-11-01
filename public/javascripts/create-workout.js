@@ -38,3 +38,10 @@ async function createWorkout(event) {
     alert("Something's wrong, please try again");
   }
 }
+
+async function userLogout() {
+  const resRaw = await fetch("userLogout");
+  if (resRaw.status === 401) {
+    window.location.assign("/login");
+  }
+}
