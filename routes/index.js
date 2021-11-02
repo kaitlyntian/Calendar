@@ -45,10 +45,28 @@ router.get("/user/dashboard", auth, async(req, res) => {
     res.status(400).send({err: e});
   }
 });
+/* GET EDIT WORKOUT PAGE */
+router.get("/edit/workout/:id", async(req, res) => {
+  const intId = parseInt(req.params.id);
+  req.session.workout = await myDB.getWorkout(intId);
+  res.redirect("/edit-workout.html");
+});
+
+/* GET EDIT WORKOUT DATA */
+router.get("/get/workout/data", auth, async(req, res) => {
+  try {
+    let workout = req.session.workout;
+    res.send({workout: workout});
+  } catch(e) {
+    console.log("Error", e);
+    res.status(400).send({err: e});
+  }
+});
 /* LOGOUT */
 router.get("userLogout", auth, async(req, res) => {
   try {
     delete req.session.email;
+    delete req.session.workout;
   } catch(e) {
     console.error("Error", e);
     res.status(400).send({err: e});

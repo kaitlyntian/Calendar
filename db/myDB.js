@@ -20,14 +20,16 @@ client.connect(function (err) {
 */
 
 /* DUMMY DATA */
+let id = 5;
+
 let users = [
   { firstName: "Jennifer", lastName: "Xiao", userName: "Jenn", email: "123@gmail.com", pwd: "123456"}];
 
 let arrangements = [
-  {email: "123@gmail.com", date: "2021-10-24", time: "18:00:00", duration: "15", type: "Yoga", finish: "yes", note: ""},
-  {email: "123@gmail.com", date: "2021-10-28", time: "18:00:00", duration: "30", type: "Cardio", finish: "No", note: ""},
-  {email: "123@gmail.com", date: "2021-10-29", time: "18:00:00", duration: "60", type: "Yoga", finish: "No", note: "Test note"},
-  {email: "123@gmail.com", date: "2021-11-5", time: "18:00:00", duration: "90", type: "Go to Gym", finish: "No", note: "Testing"}];
+  {_id: 1, email: "123@gmail.com", date: "2021-10-24", time: "18:00:00", duration: "15", type: "yoga", finish: "yes", note: ""},
+  {_id: 2, email: "123@gmail.com", date: "2021-10-28", time: "18:00:00", duration: "30", type: "cardio", finish: "No", note: ""},
+  {_id: 3, email: "123@gmail.com", date: "2021-10-29", time: "18:00:00", duration: "60", type: "yoga", finish: "No", note: "Test note"},
+  {_id: 4, email: "123@gmail.com", date: "2021-11-5", time: "18:00:00", duration: "90", type: "gym", finish: "No", note: "Testing"}];
 
 /* END DUMMY DATA */
 
@@ -86,7 +88,8 @@ function createWorkout(email, type, date, time, duration, note) {
   if (!containUser(email)) {
     return "Sorry, please log in first";
   }
-  const newWorkout = { email: email, type: type, date: date, time: time, duration: duration, note: note, finish: "No" };
+  const newWorkout = {_id: id, email: email, type: type, date: date, time: time, duration: duration, note: note, finish: "No" };
+  id++;
   arrangements.push(newWorkout);
   console.log("Workout: ", arrangements);
   return "success";
@@ -126,10 +129,21 @@ function getUserData(email) {
   return userData;
 }
 
+function getWorkout(_id) {
+  let foundWorkout = null;
+  for(let i = 0; i < arrangements.length; i++) {
+    if(arrangements[i]._id === _id) {
+      foundWorkout = arrangements[i];
+    }
+  }
+  return foundWorkout;
+}
+
 module.exports = {
   registerUser,
   userLogin,
   createWorkout,
   getData,
-  getUserData
+  getUserData,
+  getWorkout
 };

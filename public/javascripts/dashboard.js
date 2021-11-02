@@ -18,7 +18,7 @@ function renderFile(file) {
         <p class = "card-text">${file.note}</p>
         <p class="card-text">Date: ${file.date}</p>
         <p class="card-text">Time: ${file.time}</p>
-        <a href="#" class="btn btn-primary btn-dashboard">Edit</a>
+        <a href="/edit/workout/${file._id}" class="btn btn-primary btn-dashboard">Edit</a>
       </div>
     </div>
     `;
@@ -32,7 +32,7 @@ function renderFile(file) {
         <p class = "card-text">${file.note}</p>
         <p class="card-text">Date: ${file.date}</p>
         <p class="card-text">Time: ${file.time}</p>
-        <a href="#" class="btn btn-primary btn-dashboard">Edit</a>
+        <a href="/edit/workout/${file._id}" class="btn btn-primary btn-dashboard">Edit</a>
       </div>
     </div>
     `;
@@ -57,7 +57,7 @@ Logout function.  Kills session.
 async function userLogout() {
   const resRaw = await fetch("userLogout");
   if (resRaw.status === 401) {
-    window.location.assign("/login");
+    window.location.assign("/logIn.html");
   }
 }
 
