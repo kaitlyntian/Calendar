@@ -29,7 +29,7 @@ let arrangements = [
   {_id: 1, email: "123@gmail.com", date: "2021-10-24", time: "18:00:00", duration: "15", type: "yoga", finish: "yes", note: ""},
   {_id: 2, email: "123@gmail.com", date: "2021-10-28", time: "18:00:00", duration: "30", type: "cardio", finish: "No", note: ""},
   {_id: 3, email: "123@gmail.com", date: "2021-10-29", time: "18:00:00", duration: "60", type: "yoga", finish: "No", note: "Test note"},
-  {_id: 4, email: "123@gmail.com", date: "2021-11-5", time: "18:00:00", duration: "90", type: "gym", finish: "No", note: "Testing"}];
+  {_id: 4, email: "123@gmail.com", date: "2021-11-05", time: "18:00:00", duration: "90", type: "gym", finish: "No", note: "Testing"}];
 
 /* END DUMMY DATA */
 
