@@ -15,7 +15,7 @@ function renderFile(file) {
       <h5 class="card-header text-center">${file.type}</h5>
       <div class="card-body">
         <h5 class="completed card-title">Finish Exercise: ${file.finish}</h5>
-        <p class = "card-text">${file.note}</p>
+        <p class = "card-text">${file.notes}</p>
         <p class="card-text">Date: ${file.date}</p>
         <p class="card-text">Time: ${file.time}</p>
         <a href="/edit/workout/${file._id}" class="btn btn-primary btn-dashboard">Edit</a>
@@ -29,7 +29,7 @@ function renderFile(file) {
       <h5 class="card-header text-center">${file.type}</h5>
       <div class="card-body">
         <h5 class="incompleted card-title">Finish Exercise: ${file.finish}</h5>
-        <p class = "card-text">${file.note}</p>
+        <p class = "card-text">${file.notes}</p>
         <p class="card-text">Date: ${file.date}</p>
         <p class="card-text">Time: ${file.time}</p>
         <a href="/edit/workout/${file._id}" class="btn btn-primary btn-dashboard">Edit</a>
@@ -47,7 +47,8 @@ async function loadFiles() {
   divFiles.innerHTML = "";
   const resRaw = await fetch("/user/dashboard");
   const res = await resRaw.json();
-  userName.innerHTML = res.user.userName;
+  userName.innerHTML = res.user;
+  console.log(res.files);
   res.files.forEach(renderFile);
 
 }

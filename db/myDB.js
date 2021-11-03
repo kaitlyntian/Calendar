@@ -1,4 +1,5 @@
 const { MongoClient } = require("mongodb");
+const ObjectId = require("mongodb").ObjectId;
 const url = process.env.MONGI_URL || "mongodb://127.0.0.1:27017";
 const client = new MongoClient(url, { useUnifiedTopology: true });
 const db = client.db("calendar");
@@ -87,14 +88,17 @@ async function getUserData(email) {
   }
 }
 
-async function getWorkout(_id) {
-  let foundWorkout = null;
-  for(let i = 0; i < arrangements.length; i++) {
-    if(arrangements[i]._id === _id) {
-      foundWorkout = arrangements[i];
-    }
+async function getWorkout(id) {
+  await client.connect();
+  try {
+    const workoutData = await arrangements.findOne({"_id": new ObjectId(id)});
+    console.log("workoutData in myDB", workoutData);
+    return workoutData;
+  } catch (e) {
+    console.log(e);
+  } finally {
+    client.close();
   }
-  return foundWorkout;
 }
 
 module.exports = {

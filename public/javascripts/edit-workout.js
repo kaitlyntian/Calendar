@@ -7,10 +7,11 @@ const duration = document.getElementById("Input-Edit-Duration");
 async function workoutDetails() {
   const resRaw = await fetch("/get/workout/data");
   const res = await resRaw.json();
+  console.log(res);
   type.value = res.workout.type;
   date.value = res.workout.date;
   time.value = res.workout.time;
-  notes.value = res.workout.note;
+  notes.value = res.workout.notes;
   duration.value = res.workout.duration;
 }
 

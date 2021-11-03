@@ -34,10 +34,10 @@ router.get("/create/workout", auth, (req, res) => {
 /* GET DASHBOARD */
 router.get("/user/dashboard", auth, async(req, res) => {
   try {
-    let email = req.session.email;
-    const arrangement = await myDB.getData(email);
-    const userData = await myDB.getUserData(email);
-    res.send({ files: arrangement, user: userData },);
+    const arrangement = await myDB.getData(req.session.email);
+    //const userData = await myDB.getUserData(email);
+    console.log(arrangement);
+    res.send({ files: arrangement, user: req.session.email },);
   } catch (e) {
     console.log("Error", e);
     res.status(400).send({err: e});
@@ -46,7 +46,7 @@ router.get("/user/dashboard", auth, async(req, res) => {
 
 /* GET EDIT WORKOUT PAGE */
 router.get("/edit/workout/:id", async(req, res) => {
-  const intId = parseInt(req.params.id);
+  const intId = req.params.id;
   req.session.workout = await myDB.getWorkout(intId);
   res.redirect("/edit-workout.html");
 });
@@ -54,8 +54,7 @@ router.get("/edit/workout/:id", async(req, res) => {
 /* GET EDIT WORKOUT DATA */
 router.get("/get/workout/data", auth, async(req, res) => {
   try {
-    let workout = req.session.workout;
-    res.send({workout: workout});
+    res.send({workout: req.session.workout});
   } catch(e) {
     console.log("Error", e);
     res.status(400).send({err: e});
