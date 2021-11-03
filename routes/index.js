@@ -61,10 +61,10 @@ router.get("/get/workout/data", auth, async(req, res) => {
   }
 });
 /* LOGOUT */
-router.get("userLogout", auth, async(req, res) => {
+router.get("/userLogout", async(req, res) => {
   try {
-    delete req.session.email;
-    delete req.session.workout;
+    await delete req.session;
+    res.send({logout: "success"});
   } catch(e) {
     console.error("Error", e);
     res.status(400).send({err: e});

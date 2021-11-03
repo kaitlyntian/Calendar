@@ -15,10 +15,12 @@ async function workoutDetails() {
   duration.value = res.workout.duration;
 }
 
-async function userLogout() {
-  const resRaw = await fetch("userLogout");
-  if(resRaw.status == 401) {
-    window.location.assign("/logIn.html");
+async function userLogout(event) {
+  event.preventDefault();
+  const resRaw = await fetch("/userLogout");
+  const res = await resRaw.json();
+  if (res.logout === "success") {
+    window.location.assign("logIn.html");
   }
 }
 

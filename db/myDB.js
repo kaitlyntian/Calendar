@@ -6,6 +6,8 @@ const db = client.db("calendar");
 const users = db.collection("users");
 const arrangements = db.collection("arrangements");
 
+const bcrypt = require("bcrypt");
+
 /* REGISTER NEW USER INTO DB */
 async function registerUser(userInfo) {
   await client.connect();
@@ -13,14 +15,16 @@ async function registerUser(userInfo) {
   if (user) {
     return "The email exists, please use another email address";
   }
-  const newData = {
-    firstName: userInfo.firstName,
-    lastName: userInfo.lastName,
-    userName: userInfo.userName,
-    email: userInfo.email,
-    pwd: userInfo.pwd
-  };
   try {
+    const hashedPassword = await bcrypt.hash(userInfo.pwd, 10);
+    console.log("create password: ", hashedPassword);
+    const newData = {
+      firstName: userInfo.firstName,
+      lastName: userInfo.lastName,
+      userName: userInfo.userName,
+      email: userInfo.email,
+      pwd: hashedPassword,
+    };
     await users.insertOne(newData);
     return "success";
   } catch (e) {
@@ -37,11 +41,16 @@ async function userLogin(email, pwd) {
   if (!user) {
     return "User not exists, please register first";
   }
-  if (user.pwd === pwd) {
-    return "success";
-  } else {
-    return "Wrong password or email address, please try again";
-  }
+  try {
+    console.log("user hashpassword: ", user.pwd);
+    if (await bcrypt.compare(pwd, user.pwd)) {
+      return "success";
+    } else {
+      return "Wrong password or email address, please try again";
+    }
+  } catch (e) {
+    console.log({Error: e});
+  } 
 }
 
 /* CREATE WORKOUT TO DB */
@@ -53,7 +62,7 @@ async function createWorkout(email, workoutInfo) {
     console.log(arrangements);
     return "success";
   } catch (e) {
-    console.log(e);
+    console.log({Error: e});
   } finally {
     client.close();
   }
@@ -64,7 +73,6 @@ async function getData(email) {
   await client.connect();
   try {
     const arrangement = await arrangements.find({email: email}).sort({date: -1}).toArray();
-    console.log("arrangement in myDB: ", arrangement);
     return arrangement;
   } catch (e) {
     console.log(e);
@@ -78,7 +86,6 @@ async function getUserData(email) {
   await client.connect();
   try {
     const userData = await users.findOne({email: email});
-    console.log("userData in myDB", userData);
     if (!userData) {return "Sorry, please log in first";};
     return userData;
   } catch (e) {
