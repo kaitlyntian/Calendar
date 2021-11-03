@@ -1,79 +1,39 @@
-/*
-MONGODB CLIENT -> KEEP FOR WHEN U?SING MONGODB
-const MongoClient = require("mongodb").MongoClient;
-const url = "mongodb://127.0.0.1:27017";
-const dbName = "calendar";
-const client = new MongoClient(url);
-
-// MONGODB CONNECTION
-client.connect(function (err) {
-  if (err) {
-    console.log(err);
-    return;
-  } else {
-    console.log("Connected successfully to server");
-    const db = client.db(dbName);
-    //callback && callback(db)
-    client.close();
-  }
-});
-*/
-
-/* DUMMY DATA */
-let id = 5;
-
-let users = [
-  { firstName: "Jennifer", lastName: "Xiao", userName: "Jenn", email: "123@gmail.com", pwd: "123456"}];
-
-let arrangements = [
-  {_id: 1, email: "123@gmail.com", date: "2021-10-24", time: "18:00:00", duration: "15", type: "yoga", finish: "yes", note: ""},
-  {_id: 2, email: "123@gmail.com", date: "2021-10-28", time: "18:00:00", duration: "30", type: "cardio", finish: "No", note: ""},
-  {_id: 3, email: "123@gmail.com", date: "2021-10-29", time: "18:00:00", duration: "60", type: "yoga", finish: "No", note: "Test note"},
-  {_id: 4, email: "123@gmail.com", date: "2021-11-05", time: "18:00:00", duration: "90", type: "gym", finish: "No", note: "Testing"}];
-
-/* END DUMMY DATA */
-
-/* CHECK FOR OF USER EXISTS */
-function containUser(email) {
-  let existUser = false;
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].email === email) {
-      existUser = true;
-      break;
-    }
-  }
-  return existUser;
-}
+const { MongoClient } = require("mongodb");
+const url = process.env.MONGI_URL || "mongodb://127.0.0.1:27017";
+const client = new MongoClient(url, { useUnifiedTopology: true });
+const db = client.db("calendar");
+const users = db.collection("users");
+const arrangements = db.collection("arrangements");
 
 /* REGISTER NEW USER INTO DB */
-function registerUser(firstName, lastName, userName, email, pwd) {
-  if (containUser(email)) {
+async function registerUser(userInfo) {
+  await client.connect();
+  const user = await users.findOne({email: userInfo.email});
+  if (user) {
     return "The email exists, please use another email address";
   }
   const newData = {
-    firstName: firstName,
-    lastName: lastName,
-    userName: userName,
-    email: email,
-    pwd: pwd
+    firstName: userInfo.firstName,
+    lastName: userInfo.lastName,
+    userName: userInfo.userName,
+    email: userInfo.email,
+    pwd: userInfo.pwd
   };
-  users.push(newData);
-  console.log("user info:", users);
-  return "success";
+  try {
+    await users.insertOne(newData);
+    return "success";
+  } catch (e) {
+    console.log(e);
+  } finally {
+    client.close();
+  }
 }
 
 /* LOGIN USER */
-function userLogin(email, pwd) {
-  let exist = false;
-  let user;
-  for (let j = 0; j < users.length; j++) {
-    if (users[j].email === email) {
-      exist = true;
-      user = users[j];
-      break;
-    }
-  }
-  if (!exist) {
+async function userLogin(email, pwd) {
+  await client.connect();
+  const user = await users.findOne({email: email});
+  if (!user) {
     return "User not exists, please register first";
   }
   if (user.pwd === pwd) {
@@ -84,52 +44,50 @@ function userLogin(email, pwd) {
 }
 
 /* CREATE WORKOUT TO DB */
-function createWorkout(email, type, date, time, duration, note) {
-  if (!containUser(email)) {
-    return "Sorry, please log in first";
+async function createWorkout(email, workoutInfo) {
+  await client.connect();
+  const newWorkout = {email: email, type: workoutInfo.type, date: workoutInfo.date, time: workoutInfo.time, duration: workoutInfo.duration, notes: workoutInfo.notes, finish: "No" };
+  try {
+    await arrangements.insertOne(newWorkout);
+    console.log(arrangements);
+    return "success";
+  } catch (e) {
+    console.log(e);
+  } finally {
+    client.close();
   }
-  const newWorkout = {_id: id, email: email, type: type, date: date, time: time, duration: duration, note: note, finish: "No" };
-  id++;
-  arrangements.push(newWorkout);
-  console.log("Workout: ", arrangements);
-  return "success";
 }
 
 /* GRAB DATA FOR WORKOUTS */
-function getData(email) {
-  if (!containUser(email)) {
-    return "Sorry, please log in first";
+async function getData(email) {
+  await client.connect();
+  try {
+    const arrangement = await arrangements.find({email: email}).sort({date: -1}).toArray();
+    console.log("arrangement in myDB: ", arrangement);
+    return arrangement;
+  } catch (e) {
+    console.log(e);
+  } finally {
+    client.close();
   }
-  let arrangement = [];
-  for (let i = 0; i < arrangements.length; i++) {
-    if (arrangements[i].email === email) {
-      arrangement.push(arrangements[i]);
-    }
-  }
-  let sortedArrangement = arrangement.sort((a, b) => {
-    if (a.date > b.date) {return -1;}
-    if (a.date < b.date) {return 1;}
-    return 0;
-  });
-  console.log(sortedArrangement);
-  return sortedArrangement;
 }
 
 /* GET DATA FOR USER */
-function getUserData(email) {
-  if(!containUser(email)) {
-    return "Sorry, please log in first";
+async function getUserData(email) {
+  await client.connect();
+  try {
+    const userData = await users.findOne({email: email});
+    console.log("userData in myDB", userData);
+    if (!userData) {return "Sorry, please log in first";};
+    return userData;
+  } catch (e) {
+    console.log(e);
+  } finally {
+    client.close();
   }
-  let userData;
-  for(let i = 0; i < users.length; i++) {
-    if(users[i].email === email) {
-      userData = users[i];
-    }
-  }
-  return userData;
 }
 
-function getWorkout(_id) {
+async function getWorkout(_id) {
   let foundWorkout = null;
   for(let i = 0; i < arrangements.length; i++) {
     if(arrangements[i]._id === _id) {

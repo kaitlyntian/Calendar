@@ -9,7 +9,7 @@ function renderFile(file) {
 
   const divFile = document.createElement("div");
 
-  if(file.finish == "yes") {
+  if(file.finish == "Yes") {
     divFile.innerHTML = `
     <div class="card card-dashboard">
       <h5 class="card-header text-center">${file.type}</h5>

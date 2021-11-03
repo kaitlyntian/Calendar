@@ -21,7 +21,12 @@ async function createWorkout(event) {
     return;
   }
 
+  //const resRaw = await fetch("/user/dashboard");
+  //const res = await resRaw.json();
+
   const data = {
+    //email: res.user.email,
+    //files: res.files,
     type: type.value,
     date: date.value,
     time: time.value,
@@ -29,12 +34,12 @@ async function createWorkout(event) {
     notes: notes.value,
   };
   const options = {
-    method: "post",
+    method: "POST",
     credentials: "include",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(data)
   };
-  const rawData = await fetch("/create/workout", options);
+  const rawData = await fetch("/create/workout", options, {credentials: "include"});
   if (rawData.status == 200) {
     window.location.assign("dashboard.html");
   } else {
