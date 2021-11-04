@@ -25,8 +25,6 @@ async function createWorkout(event) {
   //const res = await resRaw.json();
 
   const data = {
-    //email: res.user.email,
-    //files: res.files,
     type: type.value,
     date: date.value,
     time: time.value,
@@ -40,7 +38,7 @@ async function createWorkout(event) {
     body: JSON.stringify(data)
   };
   const rawData = await fetch("/create/workout", options, {credentials: "include"});
-  if (rawData.status == 200) {
+  if (rawData.status === 200) {
     window.location.assign("dashboard.html");
   } else {
     alert("Something's wrong, please try again");

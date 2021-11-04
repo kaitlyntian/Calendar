@@ -17,7 +17,6 @@ async function registerUser(userInfo) {
   }
   try {
     const hashedPassword = await bcrypt.hash(userInfo.pwd, 10);
-    console.log("create password: ", hashedPassword);
     const newData = {
       firstName: userInfo.firstName,
       lastName: userInfo.lastName,
@@ -108,11 +107,26 @@ async function getWorkout(id) {
   }
 }
 
+async function editWorkout(workoutInfo) {
+  await client.connect();
+  try {
+    console.log(workoutInfo.id);
+    const workoutData = await arrangements.updateOne({_id: workoutInfo.id}, {$set: {type: workoutInfo.type, date: workoutInfo.date, time: workoutInfo.time, duration: workoutInfo.duration, notes: workoutInfo.notes}});
+    console.log("new workoutData in DB: ", workoutData);
+    return "success";
+  } catch (e) {
+    console.log({Error: e});
+  } finally {
+    client.close();
+  }
+}
+
 module.exports = {
   registerUser,
   userLogin,
   createWorkout,
   getData,
   getUserData,
-  getWorkout
+  getWorkout,
+  editWorkout
 };

@@ -67,7 +67,6 @@ router.get("/get/workout/data", auth, async(req, res) => {
 router.get("/userLogout", async(req, res) => {
   try {
     req.session.destroy();
-    console.log("logout: ", req.session);
     res.send({logout: "success"});
   } catch(e) {
     console.error("Error", e);
@@ -127,6 +126,17 @@ router.post("/create/workout", auth, async (req, res) => {
       res.status(409).send({createWorkout: msg});
     }
   } catch (e) {
+    res.status(400).send({ err: e });
+  }
+});
+
+router.post("/edit/workout", auth, async(req, res) => {
+  try {
+    const msg = await myDB.editWorkout(req.body);
+    if (msg === "success") {
+      res.sendStatus(200);
+    }
+  } catch(e) {
     res.status(400).send({ err: e });
   }
 });
