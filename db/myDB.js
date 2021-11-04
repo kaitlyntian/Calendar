@@ -110,9 +110,7 @@ async function getWorkout(id) {
 async function editWorkout(workoutInfo) {
   await client.connect();
   try {
-    console.log(workoutInfo.id);
-    const workoutData = await arrangements.updateOne({_id: workoutInfo.id}, {$set: {type: workoutInfo.type, date: workoutInfo.date, time: workoutInfo.time, duration: workoutInfo.duration, notes: workoutInfo.notes}});
-    console.log("new workoutData in DB: ", workoutData);
+    const workoutData = await arrangements.updateOne({"_id": ObjectId(workoutInfo.id)}, {$set: {type: workoutInfo.type, date: workoutInfo.date, time: workoutInfo.time, duration: workoutInfo.duration, notes: workoutInfo.notes}});
     return "success";
   } catch (e) {
     console.log({Error: e});

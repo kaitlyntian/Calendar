@@ -24,9 +24,9 @@ async function editWorkout(event) {
   time = document.getElementById("Input-Edit-Time");
   notes = document.getElementById("Input-Edit-Notes");
   duration = document.getElementById("Input-Edit-Duration");
-
+  console.log("editWorkout.js: ", id);
   const data = {
-    _id: id,
+    id: id,
     type: type.value,
     date: date.value,
     time: time.value,
