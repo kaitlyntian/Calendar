@@ -58,7 +58,6 @@ async function createWorkout(email, workoutInfo) {
   const newWorkout = {email: email, type: workoutInfo.type, date: workoutInfo.date, time: workoutInfo.time, duration: workoutInfo.duration, notes: workoutInfo.notes, finish: "No" };
   try {
     await arrangements.insertOne(newWorkout);
-    console.log(arrangements);
     return "success";
   } catch (e) {
     console.log({Error: e});
@@ -119,6 +118,18 @@ async function editWorkout(workoutInfo) {
   }
 }
 
+async function completeWorkout(workoutInfo) {
+  await client.connect();
+  try {
+    await arrangements.updateOne({"_id": new ObjectId(workoutInfo.id)}, {$set: {finish: "Yes"}});
+    return "success";
+  } catch(e) {
+    console.log(e);
+  } finally {
+    client.close();
+  }
+}
+
 module.exports = {
   registerUser,
   userLogin,
@@ -126,5 +137,6 @@ module.exports = {
   getData,
   getUserData,
   getWorkout,
-  editWorkout
+  editWorkout,
+  completeWorkout
 };

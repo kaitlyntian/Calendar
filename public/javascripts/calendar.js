@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     },
     initialView: "dayGridMonth",
-    initialDate: "2021-10-07",
+    initialDate: "2021-11-01",
     headerToolbar: {
       left: "prev,next today",
       center: "title",
@@ -40,7 +40,8 @@ document.addEventListener("DOMContentLoaded", function() {
     },
     events: [
 
-    ]
+    ],
+    height: 650
   });
 
   /* Add Calendar events from loadFiles function.  Events based on workouts */

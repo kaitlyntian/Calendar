@@ -74,6 +74,8 @@ router.get("/userLogout", async(req, res) => {
   }
 });
 
+/* CHECK SESSION */ //WORK IN PROGRESS TO UPDATE NAV BAR ON SESSION
+
 /*****************
 END GET ROUTES 
 ******************/
@@ -138,6 +140,17 @@ router.post("/edit/workout", auth, async(req, res) => {
     }
   } catch(e) {
     res.status(400).send({ err: e });
+  }
+});
+
+router.post("/complete/workout", auth, async(req, res) => {
+  try{
+    const msg = await myDB.completeWorkout(req.body);
+    if( msg === "success") {
+      res.sendStatus(200);
+    } 
+  }catch(e) {
+    res.status(400).send({err:e});
   }
 });
 

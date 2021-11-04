@@ -33,6 +33,10 @@ function renderFile(file) {
         <p class="card-text">Date: ${file.date}</p>
         <p class="card-text">Time: ${file.time}</p>
         <a href="/edit/workout/${file._id}" class="btn btn-primary btn-dashboard">Edit</a>
+        <form onsubmit="completeWorkout(event)">
+          <input type = "hidden" name = "completed" value = "${file._id}" id = "complete-workout">
+          <button type = "submit" class = "btn btn-primary btn-dashboard">Complete workout?</button>
+        </form>
       </div>
     </div>
     `;
@@ -48,9 +52,7 @@ async function loadFiles() {
   const resRaw = await fetch("/user/dashboard");
   const res = await resRaw.json();
   userName.innerHTML = res.user;
-  console.log(res.files);
   res.files.forEach(renderFile);
-
 }
 /*
 Logout function.  Kills session.
@@ -61,6 +63,26 @@ async function userLogout(event) {
   const res = await resRaw.json();
   if (res.logout === "success") {
     window.location.assign("logIn.html");
+  }
+}
+
+async function completeWorkout(event) {
+  event.preventDefault();
+  let completed = document.getElementById("complete-workout");
+  const data = {
+    id: completed.value
+  };
+  const options = {
+    method: "POST",
+    credentials: "include",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(data)
+  };
+  const rawData = await fetch("/complete/workout", options, {credentials: "include"});
+  if (rawData.status === 200) {
+    window.location.assign("dashboard.html");
+  } else {
+    alert("Something's Wrong, please try again");
   }
 }
 
