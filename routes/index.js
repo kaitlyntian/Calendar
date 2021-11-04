@@ -36,12 +36,15 @@ router.get("/user/dashboard", auth, async(req, res) => {
   try {
     const arrangement = await myDB.getData(req.session.email);
     //const userData = await myDB.getUserData(email);
-    console.log(arrangement);
-    res.send({ files: arrangement, user: req.session.email },);
+    res.send({ files: arrangement, user: req.session.userName },);
   } catch (e) {
     console.log("Error", e);
     res.status(400).send({err: e});
   }
+});
+
+router.get("/dashboard", auth, (req, res) => {
+  res.redirect("dashboard.html");
 });
 
 /* GET EDIT WORKOUT PAGE */
@@ -63,7 +66,8 @@ router.get("/get/workout/data", auth, async(req, res) => {
 /* LOGOUT */
 router.get("/userLogout", async(req, res) => {
   try {
-    await delete req.session;
+    req.session.destroy();
+    console.log("logout: ", req.session);
     res.send({logout: "success"});
   } catch(e) {
     console.error("Error", e);
@@ -100,8 +104,9 @@ router.post("/login", async (req, res) => {
     const pwd = req.body.pwd;
 
     const msg = await myDB.userLogin(email, pwd);
-    if (msg === "success") {
+    if (msg[0] === "success") {
       req.session.email = email;
+      req.session.userName = msg[1];
       res.sendStatus(200);
     } else {
       res.status(409).send({login : msg});

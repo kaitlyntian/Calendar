@@ -39,14 +39,14 @@ async function userLogin(email, pwd) {
   await client.connect();
   const user = await users.findOne({email: email});
   if (!user) {
-    return "User not exists, please register first";
+    return ["User not exists, please register first"];
   }
   try {
-    console.log("user hashpassword: ", user.pwd);
     if (await bcrypt.compare(pwd, user.pwd)) {
-      return "success";
+      console.log("username in DB:", user.userName);
+      return ["success", user.userName];
     } else {
-      return "Wrong password or email address, please try again";
+      return ["Wrong password or email address, please try again"];
     }
   } catch (e) {
     console.log({Error: e});
