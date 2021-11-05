@@ -1,5 +1,7 @@
 const divFiles = document.querySelector(".workouts");
 const userName = document.getElementById("userName");
+let calendarEl;
+let calendar;
 
 /* 
 Appends data from files grabbed to html block .workouts
@@ -43,17 +45,86 @@ function renderFile(file) {
   }
   divFiles.appendChild(divFile);
 }
-/* 
-Grabs files from database, data is grabbed from workouts, and user data
-helps render username to html, as well as workout cards
-*/
+
+/* Loader for calendar, creates calendar on dashboard */
+document.addEventListener("DOMContentLoaded", function() {
+  calendarEl = document.getElementById("calendar");
+
+  calendar = new FullCalendar.Calendar(calendarEl, {
+    eventClick: function(info) {
+      /* FORMAT TIME */
+      function formatAMPM(date){
+        let hours = date.getHours();
+        let mins = date.getMinutes();
+        let ampm = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        mins = mins < 10 ? "0" + mins : mins;
+        let strTime = hours + ":" + mins + " " + ampm;
+        return strTime;
+      }
+      /* END FORMAT TIME */
+      let eventObj = info.event;
+      info.jsEvent.preventDefault();
+      if(eventObj.url) {
+        let result = confirm("Workout: " + eventObj.title + "\n" +
+          "Start time: " + formatAMPM(eventObj.start) + "\n" +
+          "End Time: " + formatAMPM(eventObj.end) + "\n" +
+          "Would you like to edit this workout?");
+        if(result){
+          window.open(eventObj.url);
+        }
+      }
+    },
+    initialView: "dayGridMonth",
+    initialDate: "2021-11-01",
+    headerToolbar: {
+      left: "prev,next today",
+      center: "title",
+      right: "dayGridMonth,timeGridWeek,timeGridDay"
+    },
+    events: [
+
+    ],
+    height: 650
+  });
+
+  /* Add Calendar events from loadFiles function.  Events based on workouts */
+  function renderFileCalendar(file){
+    let eventStart = file.date + "T" + file.time;
+    let eventEnd = new Date(eventStart);
+    eventEnd.setMinutes(eventEnd.getMinutes() + parseInt(file.duration));
+    calendar.addEvent({
+      title: file.type,
+      start: eventStart,
+      end: eventEnd,
+      duration: file.duration,
+      backgroundColor: "#2C3E50",
+      url: "/edit/workout/" + file._id,
+    });
+  }
+
+  async function loadFiles() {
+    divFiles.innerHTML = "";
+    const resRaw = await fetch("/user/dashboard");
+    const res = await resRaw.json();
+    userName.innerHTML = res.user;
+    res.files.forEach(renderFile);
+    res.files.forEach(renderFileCalendar);
+  }
+
+  loadFiles();
+
+  calendar.render();
+});
+/*
 async function loadFiles() {
-  divFiles.innerHTML = "";
   const resRaw = await fetch("/user/dashboard");
   const res = await resRaw.json();
-  userName.innerHTML = res.user;
-  res.files.forEach(renderFile);
+  res.files.forEach(renderFileCalendar);
 }
+/*
+
 /*
 Logout function.  Kills session.
 */
@@ -85,5 +156,3 @@ async function completeWorkout(event) {
     alert("Something's Wrong, please try again");
   }
 }
-
-loadFiles();
