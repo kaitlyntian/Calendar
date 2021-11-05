@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Matthew Vargas and Shujun Xiao" />
     <meta name="description" content="The log in page of the Calendar" />
-    <meta name="keywords" content="Fitness, Scheduling, Workouts">
+    <meta name="keywords" content="Fitness, Scheduling, Workouts" />
     <title>Register</title>
-    <link rel="icon" type="image/gif" href="./images/favicon-exercise.png">
+    <link rel="icon" type="image/gif" href="./images/favicon-exercise.png" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -15,9 +15,12 @@
       crossorigin="anonymous"
     />
     <!--fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Dancing+Script:wght@700&family=Open+Sans:ital,wght@0,400;1,600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Birthstone&family=Dancing+Script:wght@700&family=Open+Sans:ital,wght@0,400;1,600&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
@@ -48,7 +51,7 @@
     <div class="container-fluid">
       <!-- FROM BLOCK -->
       <div class="row">
-        <div class = "text-center col-12 img-container-register-lg">
+        <div class="text-center col-12 img-container-register-lg">
           <h1>Register</h1>
           <div class="col-md-4 offset-md-4 form">
             <form onsubmit="register(event)">
@@ -64,9 +67,7 @@
                 />
               </div>
               <div class="mb-3">
-                <label for="Input-LastName" class="form-label"
-                  >Last Name</label
-                >
+                <label for="Input-LastName" class="form-label">Last Name</label>
                 <input
                   type="text"
                   class="form-control"
@@ -74,14 +75,14 @@
                   name="lastName"
                 />
               </div>
-              <div class = "mb-3">
-                <label for="Input-UserName" class ="form-label">Username</label>
-                <input 
-                  type = "text"
-                  class = "form-control"
+              <div class="mb-3">
+                <label for="Input-UserName" class="form-label">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
                   id="Input-UserName-Register"
                   name="userName"
-                  />
+                />
               </div>
               <div class="mb-3">
                 <label for="Input-Email-Register" class="form-label"
@@ -110,11 +111,16 @@
                   name="pwd"
                 />
               </div>
-              <button type="submit" class="submit-button btn btn-primary">Submit</button>
-              <a class = "form-links" href = "/login">Already Registered?</a>
+              <button type="submit" class="submit-button btn btn-primary">
+                Submit
+              </button>
+              <a class="form-links" href="/login">Already Registered?</a>
             </form>
           </div>
-          <img src = "../images/exercise.jpeg" alt = "animation of two people running">
+          <img
+            src="../images/exercise.jpeg"
+            alt="animation of two people running"
+          />
         </div>
       </div>
       <!-- END FORM BLOCK -->

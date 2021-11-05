@@ -35,4 +35,13 @@ Jennifer: ADD HERE PLEASE...
 * FullCalendar -> This is added into the front end, however this can be added using npm.  Feel free to install and follow their [Documentation](https://fullcalendar.io/docs)
 * Bootstrap 5.1 was used for styling.
 
+## IMAGE REFERENCES
+
+The images used for this project were found around the web. Credits and where to find them below:
+
+* [Cardio Picture](https://www.everydayhealth.com/7-tips-for-getting-back-into-a-workout-routine-if-the-pandemic-disrupted-yours/)
+* [Yoga Picture](https://www.everydayhealth.com/hs/rheumatoid-arthritis-treatment-management/exercise-modifications/)
+* [Weight Lifting Picture](https://www.everydayhealth.com/fitness/how-to-exercise-if-you-have-an-ectomorph-body-type/)
+* [Jump Rope Picture](https://health.clevelandclinic.org/the-many-benefits-of-a-cardio-workout/)
+
 ## Please feel free to use our website as you need!  Be sure to credit our work though :)

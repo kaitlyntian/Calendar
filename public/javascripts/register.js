@@ -1,4 +1,3 @@
-
 const firstName = document.getElementById("Input-FristName");
 const lastName = document.getElementById("Input-LastName");
 const email = document.getElementById("Input-Email-Register");
@@ -24,12 +23,12 @@ If inputs are good, we pass data to server, and wait for valid response
 async function register(event) {
   event.preventDefault();
   console.log("start");
-  
+
   if (firstName.value.length === 0 || lastName.value.length === 0) {
     alert("First Name and Last Name cannot be null");
     return;
   }
-  if(!email.validity.valid ||email.value.length === 0) {
+  if (!email.validity.valid || email.value.length === 0) {
     return;
   }
   if (pwd.value.length < 6) {
@@ -47,8 +46,8 @@ async function register(event) {
   const options = {
     method: "POST",
     credentials: "include",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(data)
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
   };
   const rawData = await fetch("/register", options);
   if (rawData.status == 200) {

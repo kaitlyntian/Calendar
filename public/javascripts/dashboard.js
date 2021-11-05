@@ -8,10 +8,9 @@ Appends data from files grabbed to html block .workouts
 Checks if workout has been finished or not    
 */
 function renderFile(file) {
-
   const divFile = document.createElement("div");
 
-  if(file.finish == "Yes") {
+  if (file.finish == "Yes") {
     divFile.innerHTML = `
     <div class="card card-dashboard">
       <h5 class="card-header text-center">${file.type}</h5>
@@ -24,8 +23,7 @@ function renderFile(file) {
       </div>
     </div>
     `;
-  }
-  else if (file.finish == "No") {
+  } else if (file.finish == "No") {
     divFile.innerHTML = `
     <div class="card card-dashboard">
       <h5 class="card-header text-center">${file.type}</h5>
@@ -47,13 +45,13 @@ function renderFile(file) {
 }
 
 /* Loader for calendar, creates calendar on dashboard */
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   calendarEl = document.getElementById("calendar");
 
   calendar = new FullCalendar.Calendar(calendarEl, {
-    eventClick: function(info) {
+    eventClick: function (info) {
       /* FORMAT TIME */
-      function formatAMPM(date){
+      function formatAMPM(date) {
         let hours = date.getHours();
         let mins = date.getMinutes();
         let ampm = hours >= 12 ? "PM" : "AM";
@@ -66,12 +64,20 @@ document.addEventListener("DOMContentLoaded", function() {
       /* END FORMAT TIME */
       let eventObj = info.event;
       info.jsEvent.preventDefault();
-      if(eventObj.url) {
-        let result = confirm("Workout: " + eventObj.title + "\n" +
-          "Start time: " + formatAMPM(eventObj.start) + "\n" +
-          "End Time: " + formatAMPM(eventObj.end) + "\n" +
-          "Would you like to edit this workout?");
-        if(result){
+      if (eventObj.url) {
+        let result = confirm(
+          "Workout: " +
+            eventObj.title +
+            "\n" +
+            "Start time: " +
+            formatAMPM(eventObj.start) +
+            "\n" +
+            "End Time: " +
+            formatAMPM(eventObj.end) +
+            "\n" +
+            "Would you like to edit this workout?"
+        );
+        if (result) {
           window.open(eventObj.url);
         }
       }
@@ -81,16 +87,14 @@ document.addEventListener("DOMContentLoaded", function() {
     headerToolbar: {
       left: "prev,next today",
       center: "title",
-      right: "dayGridMonth,timeGridWeek,timeGridDay"
+      right: "dayGridMonth,timeGridWeek,timeGridDay",
     },
-    events: [
-
-    ],
-    height: 650
+    events: [],
+    height: 650,
   });
 
   /* Add Calendar events from loadFiles function.  Events based on workouts */
-  function renderFileCalendar(file){
+  function renderFileCalendar(file) {
     let eventStart = file.date + "T" + file.time;
     let eventEnd = new Date(eventStart);
     eventEnd.setMinutes(eventEnd.getMinutes() + parseInt(file.duration));
@@ -141,15 +145,17 @@ async function completeWorkout(event) {
   event.preventDefault();
   let completed = document.getElementById("complete-workout");
   const data = {
-    id: completed.value
+    id: completed.value,
   };
   const options = {
     method: "POST",
     credentials: "include",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(data)
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
   };
-  const rawData = await fetch("/complete/workout", options, {credentials: "include"});
+  const rawData = await fetch("/complete/workout", options, {
+    credentials: "include",
+  });
   if (rawData.status === 200) {
     window.location.assign("/dashboard");
   } else {

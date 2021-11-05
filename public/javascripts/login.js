@@ -15,8 +15,8 @@ async function userLogin(event) {
   const options = {
     method: "post",
     credentials: "include",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(data)
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
   };
 
   const rawData = await fetch("/login", options);

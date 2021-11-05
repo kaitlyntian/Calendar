@@ -76,7 +76,7 @@ form a:hover {
 	position: relative;
 	background: #000;
 	overflow: hidden;
-	height: 650px
+	height: 650px;
 }
 
 .img-container-md {
@@ -94,84 +94,84 @@ form a:hover {
 }
 
 .img-container-lg h1 {
-    padding-top: 140px;
-    text-align: center;
-    z-index: 2;
-    position: relative;
-    color: #fff;
-    margin-top: 8rem;
-} 
+	padding-top: 140px;
+	text-align: center;
+	z-index: 2;
+	position: relative;
+	color: #fff;
+	margin-top: 8rem;
+}
 
 .img-container-lg button {
 	text-align: center;
-    z-index: 2;
-    position: relative;
-    color: #fff;
-    margin-bottom: 1rem;
+	z-index: 2;
+	position: relative;
+	color: #fff;
+	margin-bottom: 1rem;
 }
 
 .img-container-lg img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0.6;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0.6;
 }
 
 .img-container-md h1 {
-    padding-top: 70px;
-    text-align: center;
-    z-index: 2;
-    position: relative;
-    color: #fff;
-    margin-top: 10rem;
-} 
+	padding-top: 70px;
+	text-align: center;
+	z-index: 2;
+	position: relative;
+	color: #fff;
+	margin-top: 10rem;
+}
 
 .img-container-md button {
 	text-align: center;
-    z-index: 2;
-    position: relative;
-    color: #fff;
-    margin-bottom: 1rem;
+	z-index: 2;
+	position: relative;
+	color: #fff;
+	margin-bottom: 1rem;
 }
 
 .img-container-md img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0.6;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0.6;
 }
 
 .img-container-sm h1 {
-    padding-top: 65px;
-    text-align: center;
-    z-index: 2;
-    position: relative;
-    color: #fff;
-    margin-top: 5rem;
-} 
+	padding-top: 65px;
+	text-align: center;
+	z-index: 2;
+	position: relative;
+	color: #fff;
+	margin-top: 5rem;
+}
 
 .img-container-sm button {
 	text-align: center;
-    z-index: 2;
-    position: relative;
-    color: #fff;
-    margin-bottom: 1rem;
+	z-index: 2;
+	position: relative;
+	color: #fff;
+	margin-bottom: 1rem;
 }
 
 .img-container-sm img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0.6;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0.6;
 }
 
 .main-info {
@@ -185,7 +185,7 @@ form a:hover {
 	color: white;
 }
 
-#align-centered{
+#align-centered {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -203,7 +203,11 @@ form a:hover {
 }
 
 .card:hover {
-	border: 2px solid #212432!important;
+	border: 2px solid #212432 !important;
+}
+
+.card img {
+	max-height: 350px;
 }
 
 .card .card-footer {
@@ -231,32 +235,32 @@ footer {
 	position: relative;
 	background: #000;
 	overflow: hidden;
-	height: 650px
+	height: 650px;
 }
 
 .img-container-register-lg h1 {
-    text-align: center;
-    z-index: 2;
-    position: relative;
-    color: #fff;
-    margin-top: 2rem;
-} 
+	text-align: center;
+	z-index: 2;
+	position: relative;
+	color: #fff;
+	margin-top: 2rem;
+}
 
 .img-container-register-lg img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0.6;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0.6;
 }
 
 .img-container-register-lg .form {
 	text-align: center;
-    z-index: 2;
-    position: relative;
-    color: #fff;
+	z-index: 2;
+	position: relative;
+	color: #fff;
 }
 
 .form-control {
@@ -273,34 +277,33 @@ footer {
 	position: relative;
 	background: #000;
 	overflow: hidden;
-	height: 650px
+	height: 650px;
 }
 
 .img-container-login-lg h1 {
-    text-align: center;
-    z-index: 2;
-    position: relative;
-    color: #fff;
-    margin-top: 2rem;
-} 
+	text-align: center;
+	z-index: 2;
+	position: relative;
+	color: #fff;
+	margin-top: 2rem;
+}
 
 .img-container-login-lg img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0.6;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0.6;
 }
 
 .img-container-login-lg .form {
 	text-align: center;
-    z-index: 2;
-    position: relative;
-    color: #fff;
+	z-index: 2;
+	position: relative;
+	color: #fff;
 }
-
 
 /* CREATE WORKOUT STYLING */
 
@@ -308,32 +311,32 @@ footer {
 	position: relative;
 	background: #000;
 	overflow: hidden;
-	height: 650px
+	height: 650px;
 }
 
 .img-container-create-workout-lg h1 {
-    text-align: center;
-    z-index: 2;
-    position: relative;
-    color: #fff;
-    margin-top: 2rem;
-} 
+	text-align: center;
+	z-index: 2;
+	position: relative;
+	color: #fff;
+	margin-top: 2rem;
+}
 
 .img-container-create-workout-lg img {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0.6;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0.6;
 }
 
 .img-container-create-workout-lg .form {
 	text-align: center;
-    z-index: 2;
-    position: relative;
-    color: #fff;
+	z-index: 2;
+	position: relative;
+	color: #fff;
 }
 
 /* USER DASHBOARD */
@@ -378,7 +381,7 @@ footer {
 	color: #d5d534;
 }
 
-.fc-event-time, .fc-event-title {
-	color: #2C3E50;
+.fc-event-time,
+.fc-event-title {
+	color: #2c3e50;
 }
-
