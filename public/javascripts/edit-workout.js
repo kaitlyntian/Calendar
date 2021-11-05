@@ -48,6 +48,15 @@ async function editWorkout(event) {
   }
 }
 
+async function deleteWorkout(event) {
+  event.preventDefault();
+  const resRaw = await fetch("/deleteWorkout");
+  const res = await resRaw.json();
+  if (res.delete === "success") {
+    window.location.assign("dashboard.html");
+  }
+}
+
 async function userLogout(event) {
   event.preventDefault();
   const resRaw = await fetch("/userLogout");

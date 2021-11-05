@@ -80,7 +80,7 @@ async function completeWorkout(event) {
   };
   const rawData = await fetch("/complete/workout", options, {credentials: "include"});
   if (rawData.status === 200) {
-    window.location.assign("dashboard.html");
+    window.location.assign("/dashboard");
   } else {
     alert("Something's Wrong, please try again");
   }

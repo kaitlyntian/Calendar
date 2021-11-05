@@ -130,6 +130,18 @@ async function completeWorkout(workoutInfo) {
   }
 }
 
+async function deleteWorkout(id) {
+  await client.connect();
+  try {
+    await arrangements.deleteOne({"_id": ObjectId(id)});
+    return "success";
+  } catch (e) {
+    console.log({Error: e});
+  } finally {
+    client.close();
+  }
+}
+
 module.exports = {
   registerUser,
   userLogin,
@@ -138,5 +150,6 @@ module.exports = {
   getUserData,
   getWorkout,
   editWorkout,
-  completeWorkout
+  completeWorkout,
+  deleteWorkout
 };

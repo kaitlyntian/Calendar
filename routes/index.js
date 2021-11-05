@@ -33,9 +33,12 @@ router.get("/create/workout", auth, (req, res) => {
 });
 /* GET DASHBOARD */
 router.get("/user/dashboard", auth, async(req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   try {
+    console.log("email in index.js: ", req.session.email);
     const arrangement = await myDB.getData(req.session.email);
     //const userData = await myDB.getUserData(email);
+    console.log("arrangement in index.js: ", arrangement);
     res.send({ files: arrangement, user: req.session.userName },);
   } catch (e) {
     console.log("Error", e);
@@ -50,6 +53,7 @@ router.get("/dashboard", auth, (req, res) => {
 /* GET EDIT WORKOUT PAGE */
 router.get("/edit/workout/:id", async(req, res) => {
   const intId = req.params.id;
+  req.session.wortoutId = intId;
   req.session.workout = await myDB.getWorkout(intId);
   res.redirect("/edit-workout.html");
 });
@@ -69,6 +73,21 @@ router.get("/userLogout", async(req, res) => {
     req.session.destroy();
     res.send({logout: "success"});
   } catch(e) {
+    console.error("Error", e);
+    res.status(400).send({err: e});
+  }
+});
+
+router.get("/deleteWorkout", auth, async(req, res) => {
+  try {
+    const intId = req.session.wortoutId;
+    console.log("id in index.js: ", intId);
+    const msg = await myDB.deleteWorkout(intId);
+    if (msg === "success") {
+      res.send({delete: "success"});
+    }
+    req.session.wortoutId = "";
+  } catch (e) {
     console.error("Error", e);
     res.status(400).send({err: e});
   }
@@ -138,6 +157,7 @@ router.post("/edit/workout", auth, async(req, res) => {
     if (msg === "success") {
       res.sendStatus(200);
     }
+    req.session.wortoutId = "";
   } catch(e) {
     res.status(400).send({ err: e });
   }
@@ -153,6 +173,8 @@ router.post("/complete/workout", auth, async(req, res) => {
     res.status(400).send({err:e});
   }
 });
+
+
 
 /*****************
 END POST ROUTES 
