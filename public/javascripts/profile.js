@@ -19,7 +19,7 @@ async function loadFiles() {
         <p class = "card-text center">Last Name: ${res.userInfo.lastName}</p>
         <p class="card-text center">User Name: ${res.userInfo.userName}</p>
         <p class="card-text center">Email Address: ${res.userInfo.email}</p>
-        <p class="card-text center">After you join us, you have finished: ${res.finishedTime} times workout! Great job!</p>
+        <p class="card-text center">After joining us, you have finished: <strong>${res.finishedTime}</strong> times workout! Great job!</p>
       </div>
     </div>
     `;

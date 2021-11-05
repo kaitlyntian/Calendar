@@ -24,7 +24,20 @@ async function editWorkout(event) {
   time = document.getElementById("Input-Edit-Time");
   notes = document.getElementById("Input-Edit-Notes");
   duration = document.getElementById("Input-Edit-Duration");
-  console.log("editWorkout.js: ", id);
+
+  if (type.value === "Choose Workout") {
+    alert("Please select the exercise type");
+    return;
+  }
+  if (date.value.length === 0 || time.value.length === 0) {
+    alert("Please select the date and time to do exercise");
+    return;
+  }
+  if (duration.value === "Choose Time") {
+    alert("Please select the duration of this exercise");
+    return;
+  }
+  
   const data = {
     id: id,
     type: type.value,

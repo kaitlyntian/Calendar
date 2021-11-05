@@ -12,7 +12,7 @@ Waits for response
 async function createWorkout(event) {
   event.preventDefault();
   
-  if (type.value.length === 0) {
+  if (type.value === "Choose Workout") {
     alert("Please select the exercise type");
     return;
   }
@@ -20,7 +20,10 @@ async function createWorkout(event) {
     alert("Please select the date and time to do exercise");
     return;
   }
-
+  if (duration.value === "Choose Time") {
+    alert("Please select the duration of this exercise");
+    return;
+  }
   //const resRaw = await fetch("/user/dashboard");
   //const res = await resRaw.json();
 

@@ -37,8 +37,6 @@ router.get("/user/dashboard", auth, async(req, res) => {
   try {
     console.log("email in index.js: ", req.session.email);
     const arrangement = await myDB.getData(req.session.email);
-    //const userData = await myDB.getUserData(email);
-    console.log("arrangement in index.js: ", arrangement);
     res.send({ files: arrangement, user: req.session.userName },);
   } catch (e) {
     console.log("Error", e);
