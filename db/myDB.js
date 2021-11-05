@@ -93,6 +93,18 @@ async function getUserData(email) {
   }
 }
 
+async function countFinished(email) {
+  await client.connect();
+  try {
+    const count = await arrangements.find({email: email, finish: "Yes"}).count();
+    return count;
+  } catch (e) {
+    console.log(e);
+  } finally {
+    client.close();
+  }
+}
+
 async function getWorkout(id) {
   await client.connect();
   try {
@@ -151,5 +163,6 @@ module.exports = {
   getWorkout,
   editWorkout,
   completeWorkout,
-  deleteWorkout
+  deleteWorkout,
+  countFinished
 };

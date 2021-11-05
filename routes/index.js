@@ -93,6 +93,17 @@ router.get("/deleteWorkout", auth, async(req, res) => {
   }
 });
 
+router.get("/userData", auth, async(req, res) => {
+  try {
+    const user = await myDB.getUserData(req.session.email);
+    const finishedTime = await myDB.countFinished(req.session.email);
+    res.send({userInfo: user, finishedTime: finishedTime});
+  } catch (e) {
+    console.error("Error", e);
+    res.status(400).send({err: e});
+  }
+}); 
+
 /* CHECK SESSION */ //WORK IN PROGRESS TO UPDATE NAV BAR ON SESSION
 
 /*****************

@@ -216,6 +216,11 @@ form a:hover {
 	border-radius: 0rem;
 }
 
+.card .center {
+	text-align: center;
+	font-size: 20px;
+}
+
 footer {
 	background-color: #212432;
 }
