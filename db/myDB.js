@@ -1,6 +1,9 @@
 const { MongoClient } = require("mongodb");
+require("dotenv").config();
+
 const ObjectId = require("mongodb").ObjectId;
-const url = process.env.MONGI_URL || "mongodb://127.0.0.1:27017";
+//process.env.MONGI_URL
+const url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@calendar.ancvz.mongodb.net/calendar?retryWrites=true&w=majority` || "mongodb://127.0.0.1:27017";
 const client = new MongoClient(url, { useUnifiedTopology: true });
 const db = client.db("calendar");
 const users = db.collection("users");
@@ -141,7 +144,7 @@ async function completeWorkout(workoutInfo) {
     client.close();
   }
 }
-
+/*DELECT WORKOUT*/
 async function deleteWorkout(id) {
   await client.connect();
   try {
