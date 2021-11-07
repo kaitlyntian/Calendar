@@ -1,10 +1,9 @@
 # Calendar
+Authors: Shujun Xiao (Jennifer) and Matthew Vargas
 
-## Authors: Shujun Xiao and Matthew Vargas
+Project Deployment Link: https://ghastly-chupacabra-80015.herokuapp.com
 
-## Project Deployment Link -> TBD
-
-## Class [CS 5610 Web Development Fall 2021](https://johnguerra.co/classes/webDevelopment_fall_2021/_)
+Class [CS 5610 Web Development Fall 2021](https://johnguerra.co/classes/webDevelopment_fall_2021/_)
 
 ## Project Objective:
 
@@ -14,9 +13,11 @@ The purpose of this project is to utilize Node.js, Express.js, MongoDB, and HTML
 
 Matthew: I focused mostly on the front end design and building of the website, while helping as needed on the server side routing, logic, and DB pulling for rendering data to the front end.  i also did my fair share of testing and bug reporting :). I was also responsible for connecting and configuring the FullCalendar App on our website, as displayed on the user dashboard page.  
 
-Jennifer: ADD HERE PLEASE...
+Jennifer: I focused mostly on the back end implementation. I connected the project to the MongoDB, set up routing related to user register, login, workout creation and edition. Also, I helped with the front end setting and built the user profile page. Working with Matthew, we deploy our website into Heroku and connect it with MongoDB Atlas. 
 
 ## Project Video
+
+## Project Slides: https://docs.google.com/presentation/d/1ZnnhQdr33gXwZH-_W3ucf6clSOX5B2vQ025ERe3D8xA/edit#slide=id.gf8871d62e2_2_59
 
 ## Project Image
 

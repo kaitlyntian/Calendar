@@ -43,7 +43,7 @@ router.get("/user/dashboard", auth, async(req, res) => {
     res.status(400).send({err: e});
   }
 });
-
+/* GET DASHBOARD PAGE */
 router.get("/dashboard", auth, (req, res) => {
   res.redirect("dashboard.html");
 });
@@ -75,7 +75,7 @@ router.get("/userLogout", async(req, res) => {
     res.status(400).send({err: e});
   }
 });
-
+/* DELETE SPECIFIC WORKOUT FROM THE DATABASE */
 router.get("/deleteWorkout", auth, async(req, res) => {
   try {
     const intId = req.session.wortoutId;
@@ -90,7 +90,7 @@ router.get("/deleteWorkout", auth, async(req, res) => {
     res.status(400).send({err: e});
   }
 });
-
+/* GET THE USER INFORMATION INCLUDING THE TIMES OF FINISHED EXERCISE FROM DATABASE */
 router.get("/userData", auth, async(req, res) => {
   try {
     const user = await myDB.getUserData(req.session.email);
@@ -159,7 +159,7 @@ router.post("/create/workout", auth, async (req, res) => {
     res.status(400).send({ err: e });
   }
 });
-
+/* UPDATE THE SPECIFIC WORKOUT IN THE DATABASE */
 router.post("/edit/workout", auth, async(req, res) => {
   try {
     const msg = await myDB.editWorkout(req.body);
@@ -171,7 +171,7 @@ router.post("/edit/workout", auth, async(req, res) => {
     res.status(400).send({ err: e });
   }
 });
-
+/* UPDATE THE FINISH VALUE OF SPECIFIC WORKOUT TO YES */
 router.post("/complete", auth, async(req, res) => {
   try{
     const msg = await myDB.completeWorkout(req.body);

@@ -6,7 +6,6 @@ const duration = document.getElementById("Input-Duration");
 
 /*
 Checks form data for valid inputs, then passes data to server
-Waits for response
 */
 async function createWorkout(event) {
   event.preventDefault();
