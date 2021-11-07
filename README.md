@@ -13,7 +13,7 @@ The purpose of this project is to utilize Node.js, Express.js, MongoDB, and HTML
 
 Matthew: I focused mostly on the front end design and building of the website, while helping as needed on the server side routing, logic, and DB pulling for rendering data to the front end.  i also did my fair share of testing and bug reporting :). I was also responsible for connecting and configuring the FullCalendar App on our website, as displayed on the user dashboard page.  
 
-Jennifer: I focused mostly on the back end implementation. I connected the project to the MongoDB, set up routing related to user register, login, workout creation and edition. Also, I helped with the front end setting and built the user profile page. Working with Matthew, we deploy our website on the Heroku and connect it with MongoDB Atlas. 
+Jennifer: I focused mostly on the backend implementation. I connected the project to the MongoDB, set up routing related to user register, login, workout creation and edition. Also, I helped with the frontend setting and built the user profile page. Working with Matthew, we deploy our website on the Heroku and connect it with MongoDB Atlas. 
 
 ## Project Video
 
@@ -36,6 +36,7 @@ https://docs.google.com/presentation/d/1ZnnhQdr33gXwZH-_W3ucf6clSOX5B2vQ025ERe3D
 * body parser -> npm install body-parser --save
 * session -> npm install express-session --save
 * bcrypt -> npm install bcrypt --save
+* dotenv -> npm install dotenc
 * mongoDB -> npm install mongodb --save | Please be sure to install proper mongodb setup steps: [Follow this link to view more info](http://mongodb.github.io/node-mongodb-native/3.5/)
 * FullCalendar -> This is added into the front end, however this can be added using npm.  Feel free to install and follow their [Documentation](https://fullcalendar.io/docs)
 * Bootstrap 5.1 was used for styling.
