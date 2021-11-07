@@ -121,13 +121,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   calendar.render();
 });
-/*
-async function loadFiles() {
-  const resRaw = await fetch("/user/dashboard");
-  const res = await resRaw.json();
-  res.files.forEach(renderFileCalendar);
-}
-/*
 
 /*
 Logout function.  Kills session.
