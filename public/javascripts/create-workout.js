@@ -8,7 +8,6 @@ const duration = document.getElementById("Input-Duration");
 Checks form data for valid inputs, then passes data to server
 Waits for response
 */
-
 async function createWorkout(event) {
   event.preventDefault();
   
@@ -24,8 +23,6 @@ async function createWorkout(event) {
     alert("Please select the duration of this exercise");
     return;
   }
-  //const resRaw = await fetch("/user/dashboard");
-  //const res = await resRaw.json();
 
   const data = {
     type: type.value,
@@ -48,6 +45,7 @@ async function createWorkout(event) {
   }
 }
 
+/* Logout function.  Kills session.*/
 async function userLogout(event) {
   event.preventDefault();
   const resRaw = await fetch("/userLogout");

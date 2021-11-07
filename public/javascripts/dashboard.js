@@ -108,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  /*Get data from the dababase and show them in html page*/
   async function loadFiles() {
     divFiles.innerHTML = "";
     const resRaw = await fetch("/user/dashboard");

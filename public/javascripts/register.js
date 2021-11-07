@@ -7,7 +7,6 @@ const userName = document.getElementById("Input-UserName-Register");
 /* 
 Checker for if we have a valid email, passes and listens for response from server 
 */
-
 email.addEventListener("input", function (event) {
   event.preventDefault();
   if (email.validity.typeMismatch) {

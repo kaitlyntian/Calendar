@@ -5,10 +5,10 @@ let notes = document.getElementById("Input-Edit-Notes");
 let duration = document.getElementById("Input-Edit-Duration");
 let id;
 
+/* Get all the workout details of a specific user */
 async function workoutDetails() {
   const resRaw = await fetch("/get/workout/data");
   const res = await resRaw.json();
-  console.log(res);
   type.value = res.workout.type;
   date.value = res.workout.date;
   time.value = res.workout.time;
@@ -17,6 +17,7 @@ async function workoutDetails() {
   id = res.workout._id;
 }
 
+/* Checks form data for valid inputs, then passes data to server */
 async function editWorkout(event) {
   event.preventDefault();
   type = document.getElementById("Input-Edit-Type");
@@ -37,7 +38,7 @@ async function editWorkout(event) {
     alert("Please select the duration of this exercise");
     return;
   }
-  
+
   const data = {
     id: id,
     type: type.value,
@@ -54,13 +55,14 @@ async function editWorkout(event) {
     },
     body: JSON.stringify(data),
   });
-  if (rawData.status == 200) {
+  if (rawData.status === 200) {
     window.location.assign("dashboard.html");
   } else {
     alert("Something's wrong, please try again");
   }
 }
 
+/* Delete the workout from database */
 async function deleteWorkout(event) {
   event.preventDefault();
   const resRaw = await fetch("/deleteWorkout");
@@ -69,7 +71,7 @@ async function deleteWorkout(event) {
     window.location.assign("dashboard.html");
   }
 }
-
+/* Logout function.  Kills session */
 async function userLogout(event) {
   event.preventDefault();
   const resRaw = await fetch("/userLogout");

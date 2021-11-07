@@ -1,8 +1,7 @@
 const { MongoClient } = require("mongodb");
-require("dotenv").config();
+require("dotenv").config(); 
 
 const ObjectId = require("mongodb").ObjectId;
-//process.env.MONGI_URL
 const url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@calendar.ancvz.mongodb.net/calendar?retryWrites=true&w=majority` || "mongodb://127.0.0.1:27017";
 const client = new MongoClient(url, { useUnifiedTopology: true });
 const db = client.db("calendar");
@@ -96,6 +95,7 @@ async function getUserData(email) {
   }
 }
 
+/* COUNT HOW MANY TIMES THE FINISH VALUE IS YES FOR SPECIFIC USER */
 async function countFinished(email) {
   await client.connect();
   try {
@@ -108,11 +108,11 @@ async function countFinished(email) {
   }
 }
 
+/* FIND SPECIFIC WORKOUT USING THE _ID VALUE */
 async function getWorkout(id) {
   await client.connect();
   try {
     const workoutData = await arrangements.findOne({"_id": new ObjectId(id)});
-    console.log("workoutData in myDB", workoutData);
     return workoutData;
   } catch (e) {
     console.log(e);
@@ -121,6 +121,7 @@ async function getWorkout(id) {
   }
 }
 
+/* UPDATE THE SPECIFIC WORKOUT IN THE DATABASE */
 async function editWorkout(workoutInfo) {
   await client.connect();
   try {
@@ -133,6 +134,7 @@ async function editWorkout(workoutInfo) {
   }
 }
 
+/* UPDATE THE FINISH VALUE OF THE SPECIFIC WORKOUT TO YES IN DATABASE */
 async function completeWorkout(workoutInfo) {
   await client.connect();
   try {
@@ -144,6 +146,7 @@ async function completeWorkout(workoutInfo) {
     client.close();
   }
 }
+
 /*DELECT WORKOUT*/
 async function deleteWorkout(id) {
   await client.connect();
