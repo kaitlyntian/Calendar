@@ -50,7 +50,7 @@ async function register(event) {
     body: JSON.stringify(data),
   };
   const rawData = await fetch("/register", options);
-  if (rawData.status == 200) {
+  if (rawData.status === 200) {
     window.location.assign("/logIn.html");
   } else {
     alert("Something's wrong, please try again");
