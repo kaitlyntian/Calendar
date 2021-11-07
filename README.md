@@ -36,7 +36,7 @@ https://docs.google.com/presentation/d/1ZnnhQdr33gXwZH-_W3ucf6clSOX5B2vQ025ERe3D
 * body parser -> npm install body-parser --save
 * session -> npm install express-session --save
 * bcrypt -> npm install bcrypt --save
-* dotenv -> npm install dotenc
+* dotenv -> npm install dotenv
 * mongoDB -> npm install mongodb --save | Please be sure to install proper mongodb setup steps: [Follow this link to view more info](http://mongodb.github.io/node-mongodb-native/3.5/)
 * FullCalendar -> This is added into the front end, however this can be added using npm.  Feel free to install and follow their [Documentation](https://fullcalendar.io/docs)
 * Bootstrap 5.1 was used for styling.
