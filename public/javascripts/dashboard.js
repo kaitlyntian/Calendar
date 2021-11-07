@@ -33,8 +33,8 @@ function renderFile(file) {
         <p class="card-text">Date: ${file.date}</p>
         <p class="card-text">Time: ${file.time}</p>
         <a href="/edit/workout/${file._id}" class="btn btn-primary btn-dashboard">Edit</a>
-        <form onsubmit="completeWorkout(event)">
-          <input type = "hidden" name = "completed" value = "${file._id}" id = "complete-workout">
+        <form action = "/complete" method = "POST">
+          <input type = "hidden" name = "completed" value = "${file._id}">
           <button type = "submit" class = "btn btn-primary btn-dashboard">Complete workout?</button>
         </form>
       </div>
@@ -121,13 +121,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   calendar.render();
 });
-/*
-async function loadFiles() {
-  const resRaw = await fetch("/user/dashboard");
-  const res = await resRaw.json();
-  res.files.forEach(renderFileCalendar);
-}
-/*
 
 /*
 Logout function.  Kills session.
@@ -141,6 +134,7 @@ async function userLogout(event) {
   }
 }
 
+/*
 async function completeWorkout(event) {
   event.preventDefault();
   let completed = document.getElementById("complete-workout");
@@ -162,3 +156,4 @@ async function completeWorkout(event) {
     alert("Something's Wrong, please try again");
   }
 }
+*/

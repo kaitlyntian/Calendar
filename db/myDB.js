@@ -124,7 +124,7 @@ async function getWorkout(id) {
 async function editWorkout(workoutInfo) {
   await client.connect();
   try {
-    const workoutData = await arrangements.updateOne({"_id": ObjectId(workoutInfo.id)}, {$set: {type: workoutInfo.type, date: workoutInfo.date, time: workoutInfo.time, duration: workoutInfo.duration, notes: workoutInfo.notes}});
+    const workoutData = await arrangements.updateOne({"_id": ObjectId(workoutInfo.completed)}, {$set: {type: workoutInfo.type, date: workoutInfo.date, time: workoutInfo.time, duration: workoutInfo.duration, notes: workoutInfo.notes}});
     return "success";
   } catch (e) {
     console.log({Error: e});
@@ -136,7 +136,7 @@ async function editWorkout(workoutInfo) {
 async function completeWorkout(workoutInfo) {
   await client.connect();
   try {
-    await arrangements.updateOne({"_id": new ObjectId(workoutInfo.id)}, {$set: {finish: "Yes"}});
+    await arrangements.updateOne({"_id": new ObjectId(workoutInfo.completed)}, {$set: {finish: "Yes"}});
     return "success";
   } catch(e) {
     console.log(e);

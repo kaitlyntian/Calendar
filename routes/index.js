@@ -172,11 +172,13 @@ router.post("/edit/workout", auth, async(req, res) => {
   }
 });
 
-router.post("/complete/workout", auth, async(req, res) => {
+router.post("/complete", auth, async(req, res) => {
   try{
     const msg = await myDB.completeWorkout(req.body);
+    //console.log("Req body completed value: ", req.body.completed);
+    //let msg = "success";
     if( msg === "success") {
-      res.sendStatus(200);
+      res.redirect("dashboard.html");
     } 
   }catch(e) {
     res.status(400).send({err:e});
