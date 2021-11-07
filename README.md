@@ -17,7 +17,9 @@ Jennifer: I focused mostly on the back end implementation. I connected the proje
 
 ## Project Video
 
-## Project Slides: https://docs.google.com/presentation/d/1ZnnhQdr33gXwZH-_W3ucf6clSOX5B2vQ025ERe3D8xA/edit#slide=id.gf8871d62e2_2_59
+## Project Slides
+
+https://docs.google.com/presentation/d/1ZnnhQdr33gXwZH-_W3ucf6clSOX5B2vQ025ERe3D8xA/edit#slide=id.gf8871d62e2_2_59
 
 ## Project Image
 
