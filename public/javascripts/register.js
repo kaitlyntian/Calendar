@@ -21,8 +21,7 @@ If inputs are good, we pass data to server, and wait for valid response
 */
 async function register(event) {
   event.preventDefault();
-  console.log("start");
-
+  
   if (firstName.value.length === 0 || lastName.value.length === 0) {
     alert("First Name and Last Name cannot be null");
     return;

@@ -134,27 +134,3 @@ async function userLogout(event) {
     window.location.assign("logIn.html");
   }
 }
-
-/*
-async function completeWorkout(event) {
-  event.preventDefault();
-  let completed = document.getElementById("complete-workout");
-  const data = {
-    id: completed.value,
-  };
-  const options = {
-    method: "POST",
-    credentials: "include",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  };
-  const rawData = await fetch("/complete/workout", options, {
-    credentials: "include",
-  });
-  if (rawData.status === 200) {
-    window.location.assign("/dashboard");
-  } else {
-    alert("Something's Wrong, please try again");
-  }
-}
-*/
