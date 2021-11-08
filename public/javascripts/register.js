@@ -21,7 +21,7 @@ If inputs are good, we pass data to server, and wait for valid response
 */
 async function register(event) {
   event.preventDefault();
-  
+
   if (firstName.value.length === 0 || lastName.value.length === 0) {
     alert("First Name and Last Name cannot be null");
     return;
@@ -53,10 +53,10 @@ async function register(event) {
     body: JSON.stringify(data),
   };
   const rawData = await fetch("/register", options);
-  const res = await rawData.json();
   if (rawData.status === 200) {
     window.location.assign("/logIn.html");
   } else if (rawData.status === 409){
+    const res = await rawData.json();
     alert(res.register);
   } else {
     alert(res.err, " please try again");
