@@ -27,6 +27,10 @@ async function register(event) {
     alert("First Name and Last Name cannot be null");
     return;
   }
+  if (userName.value.length === 0) {
+    alert("User Name cannot be null");
+    return;
+  }
   if (!email.validity.valid || email.value.length === 0) {
     return;
   }
