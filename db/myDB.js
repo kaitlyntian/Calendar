@@ -142,7 +142,7 @@ async function editWorkout(workoutInfo) {
   await client.connect();
   try {
     const workoutData = await arrangements.updateOne(
-      { _id: ObjectId(workoutInfo.completed) },
+      { _id: ObjectId(workoutInfo.id) },
       {
         $set: {
           type: workoutInfo.type,

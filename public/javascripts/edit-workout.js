@@ -47,7 +47,7 @@ async function editWorkout(event) {
     duration: duration.value,
     notes: notes.value,
   };
-
+  console.log("duration in edit.js:", duration.value);
   const rawData = await fetch("/edit/workout", {
     method: "POST",
     headers: {
