@@ -32,6 +32,7 @@ async function register(event) {
     return;
   }
   if (!email.validity.valid || email.value.length === 0) {
+    alert("Please input a valid email");
     return;
   }
   if (pwd.value.length < 6) {
