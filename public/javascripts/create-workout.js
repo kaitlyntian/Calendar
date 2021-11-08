@@ -9,7 +9,7 @@ Checks form data for valid inputs, then passes data to server
 */
 async function createWorkout(event) {
   event.preventDefault();
-  
+
   if (type.value === "Choose Workout") {
     alert("Please select the exercise type");
     return;
@@ -33,10 +33,12 @@ async function createWorkout(event) {
   const options = {
     method: "POST",
     credentials: "include",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(data)
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
   };
-  const rawData = await fetch("/create/workout", options, {credentials: "include"});
+  const rawData = await fetch("/create/workout", options, {
+    credentials: "include",
+  });
   if (rawData.status === 200) {
     window.location.assign("dashboard.html");
   } else {

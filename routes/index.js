@@ -32,15 +32,15 @@ router.get("/create/workout", auth, (req, res) => {
   res.redirect("/create-workout.html");
 });
 /* GET DASHBOARD */
-router.get("/user/dashboard", auth, async(req, res) => {
+router.get("/user/dashboard", auth, async (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   try {
     console.log("email in index.js: ", req.session.email);
     const arrangement = await myDB.getData(req.session.email);
-    res.send({ files: arrangement, user: req.session.userName },);
+    res.send({ files: arrangement, user: req.session.userName });
   } catch (e) {
     console.log("Error", e);
-    res.status(400).send({err: e});
+    res.status(400).send({ err: e });
   }
 });
 /* GET DASHBOARD PAGE */
@@ -49,7 +49,7 @@ router.get("/dashboard", auth, (req, res) => {
 });
 
 /* GET EDIT WORKOUT PAGE */
-router.get("/edit/workout/:id", async(req, res) => {
+router.get("/edit/workout/:id", async (req, res) => {
   const intId = req.params.id;
   req.session.wortoutId = intId;
   req.session.workout = await myDB.getWorkout(intId);
@@ -57,57 +57,56 @@ router.get("/edit/workout/:id", async(req, res) => {
 });
 
 /* GET EDIT WORKOUT DATA */
-router.get("/get/workout/data", auth, async(req, res) => {
+router.get("/get/workout/data", auth, async (req, res) => {
   try {
-    res.send({workout: req.session.workout});
-  } catch(e) {
+    res.send({ workout: req.session.workout });
+  } catch (e) {
     console.log("Error", e);
-    res.status(400).send({err: e});
+    res.status(400).send({ err: e });
   }
 });
 /* LOGOUT */
-router.get("/userLogout", async(req, res) => {
+router.get("/userLogout", async (req, res) => {
   try {
     req.session.destroy();
-    res.send({logout: "success"});
-  } catch(e) {
+    res.send({ logout: "success" });
+  } catch (e) {
     console.error("Error", e);
-    res.status(400).send({err: e});
+    res.status(400).send({ err: e });
   }
 });
 /* DELETE SPECIFIC WORKOUT FROM THE DATABASE */
-router.get("/deleteWorkout", auth, async(req, res) => {
+router.get("/deleteWorkout", auth, async (req, res) => {
   try {
     const intId = req.session.wortoutId;
     console.log("id in index.js: ", intId);
     const msg = await myDB.deleteWorkout(intId);
     if (msg === "success") {
-      res.send({delete: "success"});
+      res.send({ delete: "success" });
     }
     req.session.wortoutId = "";
   } catch (e) {
     console.error("Error", e);
-    res.status(400).send({err: e});
+    res.status(400).send({ err: e });
   }
 });
 /* GET THE USER INFORMATION INCLUDING THE TIMES OF FINISHED EXERCISE FROM DATABASE */
-router.get("/userData", auth, async(req, res) => {
+router.get("/userData", auth, async (req, res) => {
   try {
     const user = await myDB.getUserData(req.session.email);
     const finishedTime = await myDB.countFinished(req.session.email);
-    res.send({userInfo: user, finishedTime: finishedTime});
+    res.send({ userInfo: user, finishedTime: finishedTime });
   } catch (e) {
     console.error("Error", e);
-    res.status(400).send({err: e});
+    res.status(400).send({ err: e });
   }
-}); 
+});
 
 /* CHECK SESSION */ //WORK IN PROGRESS TO UPDATE NAV BAR ON SESSION
 
 /*****************
 END GET ROUTES 
 ******************/
-
 
 /*****************
 POST ROUTES 
@@ -120,7 +119,7 @@ router.post("/register", async (req, res) => {
     if (msg === "success") {
       res.sendStatus(200);
     } else {
-      res.status(409).send({register: msg});
+      res.status(409).send({ register: msg });
     }
   } catch (e) {
     res.status(400).send({ err: e });
@@ -138,7 +137,7 @@ router.post("/login", async (req, res) => {
       req.session.userName = msg[1];
       res.sendStatus(200);
     } else {
-      res.status(409).send({login : msg});
+      res.status(409).send({ login: msg });
     }
   } catch (e) {
     console.error("Error", e);
@@ -153,39 +152,37 @@ router.post("/create/workout", auth, async (req, res) => {
     if (msg === "success") {
       res.sendStatus(200);
     } else {
-      res.status(409).send({createWorkout: msg});
+      res.status(409).send({ createWorkout: msg });
     }
   } catch (e) {
     res.status(400).send({ err: e });
   }
 });
 /* UPDATE THE SPECIFIC WORKOUT IN THE DATABASE */
-router.post("/edit/workout", auth, async(req, res) => {
+router.post("/edit/workout", auth, async (req, res) => {
   try {
     const msg = await myDB.editWorkout(req.body);
     if (msg === "success") {
       res.sendStatus(200);
     }
     req.session.wortoutId = "";
-  } catch(e) {
+  } catch (e) {
     res.status(400).send({ err: e });
   }
 });
 /* UPDATE THE FINISH VALUE OF SPECIFIC WORKOUT TO YES */
-router.post("/complete", auth, async(req, res) => {
-  try{
+router.post("/complete", auth, async (req, res) => {
+  try {
     const msg = await myDB.completeWorkout(req.body);
     //console.log("Req body completed value: ", req.body.completed);
     //let msg = "success";
-    if( msg === "success") {
+    if (msg === "success") {
       res.redirect("dashboard.html");
-    } 
-  }catch(e) {
-    res.status(400).send({err:e});
+    }
+  } catch (e) {
+    res.status(400).send({ err: e });
   }
 });
-
-
 
 /*****************
 END POST ROUTES 
