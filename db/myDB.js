@@ -46,7 +46,6 @@ async function userLogin(email, pwd) {
   }
   try {
     if (await bcrypt.compare(pwd, user.pwd)) {
-      console.log("username in DB:", user.userName);
       return ["success", user.userName];
     } else {
       return ["Wrong password or email address, please try again"];

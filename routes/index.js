@@ -137,7 +137,7 @@ router.post("/login", async (req, res) => {
       req.session.userName = msg[1];
       res.sendStatus(200);
     } else {
-      res.status(409).send({ login: msg });
+      res.status(409).send({ login: msg[0] });
     }
   } catch (e) {
     console.error("Error", e);
