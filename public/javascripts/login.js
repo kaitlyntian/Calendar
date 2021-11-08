@@ -20,10 +20,12 @@ async function userLogin(event) {
   };
 
   const rawData = await fetch("/login", options);
-  if (rawData.status == 200) {
+  const res = await rawData.json();
+  if (rawData.status === 200) {
     window.location.assign("/dashboard");
+  } else if (rawData.status === 409) {
+    alert(res.login);
   } else {
-    //const response = await rawData.json();
     alert("Something's wrong, please try again");
   }
 }

@@ -54,9 +54,12 @@ async function register(event) {
     body: JSON.stringify(data),
   };
   const rawData = await fetch("/register", options);
+  const res = await rawData.json();
   if (rawData.status === 200) {
     window.location.assign("/logIn.html");
+  } else if (rawData.status === 409){
+    alert(res.register);
   } else {
-    alert("Something's wrong, please try again");
+    alert(res.err, " please try again");
   }
 }
