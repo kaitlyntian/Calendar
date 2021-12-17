@@ -25,7 +25,8 @@ https://docs.google.com/presentation/d/1ZnnhQdr33gXwZH-_W3ucf6clSOX5B2vQ025ERe3D
 
 [Google Drive For Screenshots](https://drive.google.com/drive/folders/1jqH9LAlxiTkD1eNnHlciHmS9svSn6mIn?usp=sharing)
 
-## Build Dependencies and Instructions
+## Build Dependencies and 
+tructions
 
 * npm -> project build with npm init -y to create package.json files in project directory
 * eslint -> npm install eslint
