@@ -73,9 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
             formatAMPM(eventObj.start) +
             "\n" +
             "End Time: " +
-            formatAMPM(eventObj.end) +
-            "\n" +
-            "Would you like to edit this workout?"
+            formatAMPM(eventObj.end)
         );
         if (result) {
           window.open(eventObj.url);
