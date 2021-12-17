@@ -16,7 +16,7 @@ Matthew: I focused mostly on the front end design and building of the website, w
 Jennifer: I focused mostly on the backend implementation. I connected the project to the MongoDB, set up routing related to user register, login, workout creation and edition. Also, I helped with the frontend setting and built the user profile page. Working with Matthew, we deploy our website on the Heroku and connect it with MongoDB Atlas. 
 
 ## Project Video
-
+ 
 ## Project Slides
 
 https://docs.google.com/presentation/d/1ZnnhQdr33gXwZH-_W3ucf6clSOX5B2vQ025ERe3D8xA/edit#slide=id.gf8871d62e2_2_59
